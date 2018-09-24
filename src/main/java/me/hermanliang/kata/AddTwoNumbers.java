@@ -11,11 +11,30 @@ public class AddTwoNumbers {
      * numbers and return it as a linked list.
      * You may assume the two numbers do not contain any leading zero,
      * except the number 0 itself.
+     *
      * @param l1 1st number as a linked list
      * @param l2 2nd number as a linked list
      * @return sum of two numbers as a linked list
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return null;
+        ListNode ret = new ListNode(0);
+        ListNode cursor = ret;
+        int tens = 0;
+        while (l1 != null || l2 != null) {
+            int sum = tens;
+            cursor.next = new ListNode(0);
+            cursor = cursor.next;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            tens = sum / 10;
+            cursor.val = sum % 10;
+        }
+        return ret.next;
     }
 }
