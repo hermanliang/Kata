@@ -1,9 +1,9 @@
-package me.hermanliang.kata;
+package me.hermanliang.kata.linked_list;
 
 import me.hermanliang.kata.util.ListNode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AddTwoNumbersTest {
 

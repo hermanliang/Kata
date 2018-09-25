@@ -1,4 +1,4 @@
-package me.hermanliang.kata;
+package me.hermanliang.kata.linked_list;
 
 import me.hermanliang.kata.util.ListNode;
 

@@ -1,4 +1,4 @@
-package me.hermanliang.kata;
+package me.hermanliang.kata.array;
 
 import org.junit.Assert;
 import org.junit.Test;
