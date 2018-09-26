@@ -3,6 +3,10 @@ package me.hermanliang.kata.array;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @see <a href="https://leetcode.com/problems/two-sum/description/">
+ *     https://leetcode.com/problems/two-sum/description/</a>
+ */
 public class TwoSum {
 
     /**
