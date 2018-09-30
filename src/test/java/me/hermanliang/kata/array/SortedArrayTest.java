@@ -20,4 +20,11 @@ public class SortedArrayTest {
         assertEquals(2.5, new SortedArray().findMedianSortedArrays(nums1, nums2), 0.1);
     }
 
+    @Test
+    public void findMedianSortedArrays3() {
+        int[] nums1 = {};
+        int[] nums2 = {2, 3};
+        assertEquals(2.5, new SortedArray().findMedianSortedArrays(nums1, nums2), 0.1);
+    }
+
 }
