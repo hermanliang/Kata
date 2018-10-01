@@ -6,6 +6,8 @@ import java.util.Set;
 /**
  * @see <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/description/">
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/</a>
+ * @see <a href="https://leetcode.com/problems/longest-palindromic-substring/description/">
+ * https://leetcode.com/problems/longest-palindromic-substring/description/</a>
  */
 public class LongestSubstring {
 
@@ -30,5 +32,16 @@ public class LongestSubstring {
             }
         }
         return ans;
+    }
+
+    /**
+     * Given a string s, find the longest palindromic substring in s.
+     * You may assume that the maximum length of s is 1000.
+     *
+     * @param input input string
+     * @return longest palindromic substring
+     */
+    public String longestPalindrome(String input) {
+        return null;
     }
 }
