@@ -22,7 +22,30 @@ public class ZigZag {
      * @return output string
      */
     public String convert(String input, int rows) {
-        return null;
+        if (rows == 1) return input;
+        int step = 1;
+        int index = 0;
+        int lastIndex = rows - 1;
+        StringBuilder[] rowStrings = new StringBuilder[rows];
+        for (char c : input.toCharArray()) {
+            if (rowStrings[index] == null) {
+                rowStrings[index] = new StringBuilder();
+            }
+            rowStrings[index].append(c);
+            index += step;
+            if (index == 0) {
+                step = 1;
+            } else if (index == lastIndex) {
+                step = -1;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (StringBuilder rowString : rowStrings) {
+            if (rowString != null) {
+                sb.append(rowString);
+            }
+        }
+        return sb.toString();
     }
 
 }
