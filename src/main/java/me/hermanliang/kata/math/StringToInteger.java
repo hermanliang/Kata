@@ -35,6 +35,38 @@ public class StringToInteger {
      * @return convert string to integer
      */
     public int myAtoi(String input) {
-        return 0;
+        long output = 0;
+        boolean isValid = false;
+        boolean isNegative = false;
+        for (char c : input.toCharArray()) {
+            if (!isValid) {
+                if (c == ' ') continue;
+                if (c == '-') {
+                    isValid = true;
+                    isNegative = true;
+                } else if (c == '+') {
+                    isValid = true;
+                } else if (c >= '0' && c <= '9') {
+                    isValid = true;
+                    output = output * 10 + (c - '0');
+                } else {
+                    break;
+                }
+            } else {
+                if (c >= '0' && c <= '9') {
+                    output = output * 10 + (c - '0');
+                    if (isNegative && -output < Integer.MIN_VALUE) {
+                        output = Integer.MIN_VALUE;
+                        break;
+                    } else if (!isNegative && output > Integer.MAX_VALUE) {
+                        output = Integer.MAX_VALUE;
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return (int) (output * (isNegative ? -1 : 1));
     }
 }
