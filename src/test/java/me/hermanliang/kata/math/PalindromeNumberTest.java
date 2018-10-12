@@ -25,4 +25,11 @@ public class PalindromeNumberTest {
         // Reads 01 from right to left. Therefore it is not a palindrome.
         assertFalse(new PalindromeNumber().isPalindrome(input));
     }
+
+    @Test
+    public void isPalindrome4() {
+        int input = 1000021;
+        // Reads 01 from right to left. Therefore it is not a palindrome.
+        assertFalse(new PalindromeNumber().isPalindrome(input));
+    }
 }
