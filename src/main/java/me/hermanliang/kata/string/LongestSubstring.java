@@ -12,6 +12,8 @@ import java.util.Set;
 public class LongestSubstring {
 
     /**
+     * 3. Longest Substring Without Repeating Characters
+     * <p>
      * Given a string, find the length of the longest substring without repeating characters.
      *
      * @param input input string
@@ -35,6 +37,8 @@ public class LongestSubstring {
     }
 
     /**
+     * 5. Longest Palindromic Substring
+     * <p>
      * Given a string s, find the longest palindromic substring in s.
      * You may assume that the maximum length of s is 1000.
      *

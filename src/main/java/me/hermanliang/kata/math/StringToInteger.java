@@ -7,6 +7,8 @@ package me.hermanliang.kata.math;
 public class StringToInteger {
 
     /**
+     * 8. String to Integer (atoi)
+     * <p>
      * Implement atoi which converts a string to an integer.
      * <p>
      * The function first discards as many whitespace characters as necessary until

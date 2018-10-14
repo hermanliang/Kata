@@ -5,11 +5,13 @@ import java.util.Map;
 
 /**
  * @see <a href="https://leetcode.com/problems/two-sum/description/">
- *     https://leetcode.com/problems/two-sum/description/</a>
+ * https://leetcode.com/problems/two-sum/description/</a>
  */
 public class TwoSum {
 
     /**
+     * 1. Two Sum
+     * <p>
      * Given an array of integers, return indices of the two numbers
      * such that they add up to a specific target.
      * You may assume that each input would have exactly one solution,
