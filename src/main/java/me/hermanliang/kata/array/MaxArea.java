@@ -18,6 +18,24 @@ public class MaxArea {
      * @return
      */
     public int maxArea(int[] heights) {
-        return 0;
+        int start = 0;
+        int end = heights.length - 1;
+        int maxArea = 0;
+        while (end > start) {
+            int a1 = heights[start];
+            int an = heights[end];
+            int level = Math.min(a1, an);
+            int area = level * (end - start);
+            maxArea = Math.max(area, maxArea);
+            if (a1 == an) {
+                start++;
+                end--;
+            } else if (a1 > an) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return maxArea;
     }
 }
