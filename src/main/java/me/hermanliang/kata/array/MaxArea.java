@@ -22,15 +22,11 @@ public class MaxArea {
         int end = heights.length - 1;
         int maxArea = 0;
         while (end > start) {
-            int a1 = heights[start];
-            int an = heights[end];
-            int level = Math.min(a1, an);
-            int area = level * (end - start);
-            maxArea = Math.max(area, maxArea);
-            if (a1 == an) {
+            maxArea = Math.max(Math.min(heights[start], heights[end]) * (end - start), maxArea);
+            if (heights[start] == heights[end]) {
                 start++;
                 end--;
-            } else if (a1 > an) {
+            } else if (heights[start] > heights[end]) {
                 end--;
             } else {
                 start++;
