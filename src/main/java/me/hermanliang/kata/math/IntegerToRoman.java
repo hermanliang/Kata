@@ -6,6 +6,9 @@ package me.hermanliang.kata.math;
  */
 public class IntegerToRoman {
 
+    private static final String[] ones = {"I", "X", "C", "M"};
+    private static final String[] fives = {"V", "L", "D"};
+
     /**
      * 12. Integer to Roman
      * <p>
@@ -32,6 +35,38 @@ public class IntegerToRoman {
      * @return Roman string
      */
     public String intToRoman(int number) {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        int exponent = 0;
+        while(number > 0) {
+            int digit = number % 10;
+            sb.insert(0, digitToRoman(digit, exponent));
+            number /= 10;
+            exponent++;
+        }
+        return sb.toString();
+    }
+
+    private String digitToRoman(int digit, int exponent) {
+        switch (digit) {
+            case 1:
+                return ones[exponent];
+            case 2:
+                return ones[exponent] + ones[exponent];
+            case 3:
+                return ones[exponent] + ones[exponent] + ones[exponent];
+            case 4:
+                return ones[exponent] + fives[exponent];
+            case 5:
+                return fives[exponent];
+            case 6:
+                return fives[exponent] + ones[exponent];
+            case 7:
+                return fives[exponent] + ones[exponent] + ones[exponent];
+            case 8:
+                return fives[exponent] + ones[exponent] + ones[exponent] + ones[exponent];
+            case 9:
+                return ones[exponent] + ones[exponent + 1];
+        }
+        return "";
     }
 }
