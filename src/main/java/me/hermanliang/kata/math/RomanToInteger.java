@@ -32,6 +32,46 @@ public class RomanToInteger {
      * @return roman to number
      */
     public int romanToInt(String s) {
-        return 0;
+        int sum = 0;
+        int lastExponent = -1;
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case 'I':
+                    sum += 1;
+                    lastExponent = 0;
+                    break;
+                case 'V':
+                    if (lastExponent == 0) sum += 3;
+                    else sum += 5;
+                    lastExponent = 0;
+                    break;
+                case 'X':
+                    if (lastExponent == 0) sum += 8;
+                    else sum += 10;
+                    lastExponent = 1;
+                    break;
+                case 'L':
+                    if (lastExponent == 1) sum += 30;
+                    else sum += 50;
+                    lastExponent = 1;
+                    break;
+                case 'C':
+                    if (lastExponent == 1) sum += 80;
+                    else sum += 100;
+                    lastExponent = 2;
+                    break;
+                case 'D':
+                    if (lastExponent == 2) sum += 300;
+                    else sum += 500;
+                    lastExponent = 2;
+                    break;
+                case 'M':
+                    if (lastExponent == 2) sum += 800;
+                    else sum += 1000;
+                    lastExponent = 3;
+                    break;
+            }
+        }
+        return sum;
     }
 }
