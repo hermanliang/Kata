@@ -9,7 +9,7 @@ import me.hermanliang.kata.util.ListNode;
 public class AddTwoNumbers {
 
     /**
-     * 2. Add Two Numbers
+     * 2. Add Two Numbers [Medium]
      * <p>
      * You are given two non-empty linked lists representing two
      * non-negative integers. The digits are stored in reverse order

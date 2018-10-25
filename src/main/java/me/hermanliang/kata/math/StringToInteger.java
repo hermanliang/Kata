@@ -7,7 +7,7 @@ package me.hermanliang.kata.math;
 public class StringToInteger {
 
     /**
-     * 8. String to Integer (atoi)
+     * 8. String to Integer (atoi) [Medium]
      * <p>
      * Implement atoi which converts a string to an integer.
      * <p>

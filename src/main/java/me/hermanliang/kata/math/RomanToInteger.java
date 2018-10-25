@@ -7,7 +7,7 @@ package me.hermanliang.kata.math;
 public class RomanToInteger {
 
     /**
-     * 13. Roman to Integer
+     * 13. Roman to Integer [Easy]
      * <p>
      * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
      * <p>

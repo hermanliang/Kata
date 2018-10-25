@@ -7,7 +7,7 @@ package me.hermanliang.kata.math;
 public class ReverseInteger {
 
     /**
-     * 7. Reverse Integer
+     * 7. Reverse Integer [Easy]
      * <p>
      * Given a 32-bit signed integer, reverse digits of an integer.
      *

@@ -7,7 +7,7 @@ package me.hermanliang.kata.string;
 public class RegExpMatching {
 
     /**
-     * 10. Regular Expression Matching
+     * 10. Regular Expression Matching [Hard]
      * <p>
      * Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
      * <p>

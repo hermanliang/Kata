@@ -7,7 +7,7 @@ package me.hermanliang.kata.string;
 public class LongestPrefix {
 
     /**
-     * 14. Longest Common Prefix
+     * 14. Longest Common Prefix [Easy]
      * <p>
      * Write a function to find the longest common prefix string amongst an array of strings.
      * If there is no common prefix, return an empty string "".

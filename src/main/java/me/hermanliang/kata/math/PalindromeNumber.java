@@ -7,7 +7,7 @@ package me.hermanliang.kata.math;
 public class PalindromeNumber {
 
     /**
-     * 9. Palindrome Number
+     * 9. Palindrome Number [Easy]
      * <p>
      * Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
      * Follow up:
