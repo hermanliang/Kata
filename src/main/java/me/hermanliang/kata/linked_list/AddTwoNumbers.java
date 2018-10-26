@@ -23,13 +23,11 @@ public class AddTwoNumbers {
      * @return sum of two numbers as a linked list
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode ret = new ListNode(0);
-        ListNode cursor = ret;
         int tens = 0;
-        while (l1 != null || l2 != null) {
+        ListNode result = new ListNode(0);
+        ListNode cursor = result;
+        while (l1 != null || l2 != null || tens > 0) {
             int sum = tens;
-            cursor.next = new ListNode(0);
-            cursor = cursor.next;
             if (l1 != null) {
                 sum += l1.val;
                 l1 = l1.next;
@@ -40,7 +38,11 @@ public class AddTwoNumbers {
             }
             tens = sum / 10;
             cursor.val = sum % 10;
+            if (l1 != null || l2 != null || tens > 0) {
+                cursor.next = new ListNode(0);
+                cursor = cursor.next;
+            }
         }
-        return ret.next;
+        return result;
     }
 }
