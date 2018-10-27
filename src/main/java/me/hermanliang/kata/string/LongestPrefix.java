@@ -19,6 +19,29 @@ public class LongestPrefix {
      * @return longest common prefix
      */
     public String longestCommonPrefix(String[] strs) {
-        return null;
+        if (strs == null || strs.length == 0) return "";
+        int minLen = Integer.MAX_VALUE;
+        StringBuilder result = new StringBuilder();
+        for (String str : strs) {
+            minLen = Math.min(str.length(), minLen);
+        }
+        for (int i = 0; i < minLen; i++) {
+            char c = strs[0].charAt(i);
+            if (isEqualChar(strs, i, c)) {
+                result.append(c);
+            } else {
+                break;
+            }
+        }
+        return result.toString();
+    }
+
+    private boolean isEqualChar(String[] strs, int i, char c) {
+        for (String str : strs) {
+            if (c != str.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
