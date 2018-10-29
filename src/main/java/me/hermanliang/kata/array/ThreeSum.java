@@ -1,6 +1,6 @@
 package me.hermanliang.kata.array;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @see <a href="https://leetcode.com/problems/3sum/description/">
@@ -21,6 +21,34 @@ public class ThreeSum {
      * @return all unique triplets in array which gives the sum of zero
      */
     public List<List<Integer>> threeSum(int[] nums) {
-        return null;
+        List<List<Integer>> result = new ArrayList<>();
+        if (nums == null || nums.length < 3) return result;
+        Map<Integer, Set<Integer>> map = new HashMap<>();
+        Arrays.sort(nums);
+        int len = nums.length;
+        for (int i = 0; i < len - 2; i++) {
+            int first = nums[i];
+            int start = i + 1;
+            int end = len - 1;
+            if (!map.containsKey(first)) {
+                map.put(first, new HashSet<>());
+            }
+            while (end > start) {
+                int sum = first + nums[start] + nums[end];
+                if (sum == 0) {
+                    if (!map.get(first).contains(nums[start])) {
+                        map.get(first).add(nums[start]);
+                        result.add(Arrays.asList(first, nums[start], nums[end]));
+                    }
+                    start++;
+                    end--;
+                } else if (sum > 0) {
+                    end--;
+                } else {
+                    start++;
+                }
+            }
+        }
+        return result;
     }
 }
