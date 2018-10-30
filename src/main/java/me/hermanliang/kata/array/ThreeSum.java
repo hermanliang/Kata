@@ -5,6 +5,8 @@ import java.util.*;
 /**
  * @see <a href="https://leetcode.com/problems/3sum/description/">
  * https://leetcode.com/problems/3sum/description/</a>
+ * @see <a href="https://leetcode.com/problems/3sum-closest/description/">
+ * https://leetcode.com/problems/3sum-closest/description/</a>
  */
 public class ThreeSum {
 
@@ -17,7 +19,7 @@ public class ThreeSum {
      * Note:
      * The solution set must not contain duplicate triplets.
      *
-     * @param nums an array nums
+     * @param nums number array
      * @return all unique triplets in array which gives the sum of zero
      */
     public List<List<Integer>> threeSum(int[] nums) {
@@ -50,5 +52,26 @@ public class ThreeSum {
             }
         }
         return result;
+    }
+
+    /**
+     * 16. 3Sum Closest [Medium]
+     * <p>
+     * Given an array nums of n integers and an integer target, find three integers in nums such that the sum
+     * is closest to target. Return the sum of the three integers. You may assume that each input would have
+     * exactly one solution.
+     * <p>
+     * Example:
+     * <p>
+     * Given array nums = [-1, 2, 1, -4], and target = 1.
+     * <p>
+     * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+     *
+     * @param nums   number array
+     * @param target target
+     * @return sum of the three integers closest to target
+     */
+    public int threeSumClosest(int[] nums, int target) {
+        return 0;
     }
 }

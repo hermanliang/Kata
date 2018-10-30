@@ -26,4 +26,12 @@ public class ThreeSumTest {
         assertTrue(list1.equals(expected1) || list1.equals(expected2));
         assertTrue(list2.equals(expected1) || list2.equals(expected2));
     }
+
+    @Test
+    public void threeSumClosest() {
+        int[] numbers = {-1, 2, 1, -4};
+        int target = 1;
+        int expected = 2;
+        assertEquals(expected, new ThreeSum().threeSumClosest(numbers, target));
+    }
 }
