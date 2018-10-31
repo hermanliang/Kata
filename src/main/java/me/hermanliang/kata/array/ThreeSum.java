@@ -72,6 +72,28 @@ public class ThreeSum {
      * @return sum of the three integers closest to target
      */
     public int threeSumClosest(int[] nums, int target) {
-        return 0;
+        if (nums == null || nums.length < 3) return 0;
+        Arrays.sort(nums);
+        int len = nums.length;
+        int result = Integer.MAX_VALUE;
+        for (int i = 0; i < len - 2; i++) {
+            int first = nums[i];
+            int start = i + 1;
+            int end = len - 1;
+            while (end > start) {
+                int sum = first + nums[start] + nums[end] - target;
+                if (sum == 0) {
+                    return target;
+                } else if (sum > 0) {
+                    end--;
+                } else {
+                    start++;
+                }
+                if (Math.abs(sum) < Math.abs(result)) {
+                    result = sum;
+                }
+            }
+        }
+        return result + target;
     }
 }
