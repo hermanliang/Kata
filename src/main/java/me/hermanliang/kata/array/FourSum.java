@@ -39,10 +39,18 @@ public class FourSum {
         Map<String, Set<Integer>> map = new HashMap<>();
         Arrays.sort(nums);
         int len = nums.length;
+        int max = nums[len - 1];
+        if (4 * nums[0] > target || 4 * max < target) return result;
         for (int i = 0; i < len - 3; i++) {
+            int first = nums[i];
+            if (i > 0 && first == nums[i - 1]) continue;
+            if (first + 3 * max < target) continue;
+            if (first * 4 > target) continue;
             for (int j = i + 1; j < len - 2; j++) {
-                int first = nums[i];
                 int second = nums[j];
+                if (j > i + 1 && second == nums[j - 1]) continue;
+                if (second + 2 * max < target - first) continue;
+                if (second * 3 > target - first) continue;
                 int start = j + 1;
                 int end = len - 1;
                 String key = String.format("%d;%d", first, second);
