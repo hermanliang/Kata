@@ -2,6 +2,9 @@ package me.hermanliang.kata.linked_list;
 
 import me.hermanliang.kata.util.ListNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @see <a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/">
  * https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/</a>
@@ -28,7 +31,20 @@ public class RemoveNode {
      * @return the linked list which n-th node is removed
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
-
-        return null;
+        int len = 0;
+        List<ListNode> nodes = new ArrayList<>();
+        ListNode cursor = head;
+        while (cursor != null) {
+            nodes.add(cursor);
+            len++;
+            cursor = cursor.next;
+        }
+        int start = len - n - 1;
+        if (start < 0) {
+            head = head.next;
+        } else {
+            nodes.get(start).next = (n == 1) ? null : nodes.get(start + 2);
+        }
+        return head;
     }
 }
