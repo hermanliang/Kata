@@ -1,5 +1,7 @@
 package me.hermanliang.kata.string;
 
+import java.util.Stack;
+
 /**
  * @see <a href="https://leetcode.com/problems/valid-parentheses/description/">
  * https://leetcode.com/problems/valid-parentheses/description/</a>
@@ -22,6 +24,25 @@ public class ValidParentheses {
      * @return is valid parentheses or not
      */
     public boolean isValid(String s) {
-        return false;
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '(':
+                case '{':
+                case '[':
+                    stack.push(c);
+                    break;
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(') return false;
+                    break;
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{') return false;
+                    break;
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[') return false;
+                    break;
+            }
+        }
+        return stack.isEmpty();
     }
 }
