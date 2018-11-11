@@ -25,6 +25,28 @@ public class MergeList {
      * @return merged list
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        return null;
+        ListNode dummy = new ListNode(0);
+        ListNode cursor = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val > l2.val) {
+                cursor.next = new ListNode(l2.val);
+                l2 = l2.next;
+            } else {
+                cursor.next = new ListNode(l1.val);
+                l1 = l1.next;
+            }
+            cursor = cursor.next;
+        }
+        while (l1 != null) {
+            cursor.next = new ListNode(l1.val);
+            cursor = cursor.next;
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            cursor.next = new ListNode(l2.val);
+            cursor = cursor.next;
+            l2 = l2.next;
+        }
+        return dummy.next;
     }
 }
