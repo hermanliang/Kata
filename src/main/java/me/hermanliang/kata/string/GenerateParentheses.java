@@ -1,5 +1,6 @@
 package me.hermanliang.kata.string;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +28,21 @@ public class GenerateParentheses {
      * @return list of well-formed parentheses
      */
     public List<String> generateParenthesis(int n) {
-        return null;
+        List<String> container = new ArrayList<>();
+        generateParenthesis(container, n, "", 0, 0);
+        return container;
+    }
+
+    public void generateParenthesis(List<String> container, int n, String s, int open, int close) {
+        if (s.length() == n * 2) {
+            container.add(s);
+            return;
+        }
+        if (open < n) {
+            generateParenthesis(container, n, s + "(", open + 1, close);
+        }
+        if (close < open) {
+            generateParenthesis(container, n, s + ")", open, close + 1);
+        }
     }
 }
