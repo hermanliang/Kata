@@ -13,20 +13,8 @@ public class MergeListTest {
         int[] nums2 = {1, 3, 4};
         int[] expected = {1, 1, 2, 3, 4, 4};
 
-        ListNode l1 = new ListNode(0);
-        ListNode l2 = new ListNode(0);
-        ListNode cursor1 = l1;
-        for (int n : nums1) {
-            cursor1.next = new ListNode(n);
-            cursor1 = cursor1.next;
-        }
-        l1 = l1.next;
-        ListNode cursor2 = l2;
-        for (int n : nums2) {
-            cursor2.next = new ListNode(n);
-            cursor2 = cursor2.next;
-        }
-        l2 = l2.next;
+        ListNode l1 = arrayToListNode(nums1);
+        ListNode l2 = arrayToListNode(nums2);
         ListNode output = new MergeList().mergeTwoLists(l1, l2);
         for (int num : expected) {
             assertNotNull(output);
@@ -34,5 +22,15 @@ public class MergeListTest {
             output = output.next;
         }
         assertNull(output);
+    }
+
+    private ListNode arrayToListNode(int[] nums) {
+        ListNode listNode = new ListNode(0);
+        ListNode cursor = listNode;
+        for (int n : nums) {
+            cursor.next = new ListNode(n);
+            cursor = cursor.next;
+        }
+        return listNode.next;
     }
 }
