@@ -5,6 +5,8 @@ import me.hermanliang.kata.util.ListNode;
 /**
  * @see <a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">
  * https://leetcode.com/problems/merge-two-sorted-lists/description/</a>
+ * @see <a href="https://leetcode.com/problems/merge-k-sorted-lists/description/">
+ * https://leetcode.com/problems/merge-k-sorted-lists/description/</a>
  */
 public class MergeList {
 
@@ -48,5 +50,28 @@ public class MergeList {
             l2 = l2.next;
         }
         return dummy.next;
+    }
+
+    /**
+     * 23. Merge k Sorted Lists [Hard]
+     * <p>
+     * Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+     * <p>
+     * Example:
+     * <p>
+     * Input:
+     * [
+     * 1->4->5,
+     * 1->3->4,
+     * 2->6
+     * ]
+     * <p>
+     * Output: 1->1->2->3->4->4->5->6
+     *
+     * @param lists array of ListNode
+     * @return merged list
+     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        return null;
     }
 }
