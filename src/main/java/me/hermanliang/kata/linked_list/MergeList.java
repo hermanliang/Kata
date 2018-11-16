@@ -72,6 +72,15 @@ public class MergeList {
      * @return merged list
      */
     public ListNode mergeKLists(ListNode[] lists) {
-        return null;
+        if (lists == null || lists.length == 0) return null;
+        ListNode mergedList = null;
+        for (ListNode list : lists) {
+            if (mergedList == null) {
+                mergedList = list;
+                continue;
+            }
+            mergedList = mergeTwoLists(mergedList, list);
+        }
+        return mergedList;
     }
 }
