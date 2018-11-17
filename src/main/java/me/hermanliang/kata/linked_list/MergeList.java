@@ -73,14 +73,23 @@ public class MergeList {
      */
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
-        ListNode mergedList = null;
-        for (ListNode list : lists) {
-            if (mergedList == null) {
-                mergedList = list;
-                continue;
-            }
-            mergedList = mergeTwoLists(mergedList, list);
+        if (lists.length == 1) return lists[0];
+        return mergeKLists(lists, lists.length);
+    }
+
+    private ListNode mergeKLists(ListNode[] lists, int length) {
+        if (length == 2) {
+            return mergeTwoLists(lists[0], lists[1]);
         }
-        return mergedList;
+        boolean isOdd = length % 2 == 1;
+        length /= 2;
+        for (int i = 0; i < length; i++) {
+            lists[i] = mergeTwoLists(lists[i * 2], lists[i * 2 + 1]);
+        }
+        if (isOdd) {
+            lists[length] = lists[length * 2];
+            length += 1;
+        }
+        return mergeKLists(lists, length);
     }
 }
