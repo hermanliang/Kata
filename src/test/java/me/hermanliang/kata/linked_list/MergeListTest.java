@@ -3,6 +3,7 @@ package me.hermanliang.kata.linked_list;
 import me.hermanliang.kata.util.ListNode;
 import org.junit.Test;
 
+import static me.hermanliang.kata.util.ListNode.arrayToListNode;
 import static org.junit.Assert.*;
 
 public class MergeListTest {
@@ -40,15 +41,5 @@ public class MergeListTest {
             output = output.next;
         }
         assertNull(output);
-    }
-
-    private ListNode arrayToListNode(int[] nums) {
-        ListNode listNode = new ListNode(0);
-        ListNode cursor = listNode;
-        for (int n : nums) {
-            cursor.next = new ListNode(n);
-            cursor = cursor.next;
-        }
-        return listNode.next;
     }
 }
