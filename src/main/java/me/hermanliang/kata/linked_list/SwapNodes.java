@@ -26,6 +26,14 @@ public class SwapNodes {
      * @return swap every two adjacent nodes and return its head
      */
     public ListNode swapPairs(ListNode head) {
-        return null;
+        ListNode cursor = head;
+        int tmp;
+        while (cursor != null && cursor.next != null) {
+            tmp = cursor.val;
+            cursor.val = cursor.next.val;
+            cursor.next.val = tmp;
+            cursor = cursor.next.next;
+        }
+        return head;
     }
 }
