@@ -3,7 +3,7 @@ package me.hermanliang.kata.linked_list;
 import me.hermanliang.kata.util.ListNode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 public class SwapNodesTest {
 
@@ -13,12 +13,7 @@ public class SwapNodesTest {
         int[] expected = {2, 1, 4, 3};
         ListNode input = ListNode.arrayToListNode(nums);
         ListNode output = new SwapNodes().swapPairs(input);
-        for (int num : expected) {
-            assertNotNull(output);
-            assertEquals(num, output.val);
-            output = output.next;
-        }
-        assertNull(output);
+        assertArrayEquals(expected, ListNode.listNodeToArray(output));
     }
 
     @Test
@@ -28,11 +23,6 @@ public class SwapNodesTest {
         int k = 3;
         ListNode head = ListNode.arrayToListNode(nums);
         ListNode output = new SwapNodes().reverseKGroup(head, k);
-        for (int num : expected) {
-            assertNotNull(output);
-            assertEquals(num, output.val);
-            output = output.next;
-        }
-        assertNull(output);
+        assertArrayEquals(expected, ListNode.listNodeToArray(output));
     }
 }

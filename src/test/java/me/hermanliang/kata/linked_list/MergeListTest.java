@@ -4,7 +4,8 @@ import me.hermanliang.kata.util.ListNode;
 import org.junit.Test;
 
 import static me.hermanliang.kata.util.ListNode.arrayToListNode;
-import static org.junit.Assert.*;
+import static me.hermanliang.kata.util.ListNode.listNodeToArray;
+import static org.junit.Assert.assertArrayEquals;
 
 public class MergeListTest {
 
@@ -17,12 +18,7 @@ public class MergeListTest {
         ListNode l1 = arrayToListNode(nums1);
         ListNode l2 = arrayToListNode(nums2);
         ListNode output = new MergeList().mergeTwoLists(l1, l2);
-        for (int num : expected) {
-            assertNotNull(output);
-            assertEquals(num, output.val);
-            output = output.next;
-        }
-        assertNull(output);
+        assertArrayEquals(expected, listNodeToArray(output));
     }
 
     @Test
@@ -35,11 +31,6 @@ public class MergeListTest {
         ListNode l2 = arrayToListNode(nums2);
         ListNode l3 = arrayToListNode(nums3);
         ListNode output = new MergeList().mergeKLists(new ListNode[]{l1, l2, l3});
-        for (int num : expected) {
-            assertNotNull(output);
-            assertEquals(num, output.val);
-            output = output.next;
-        }
-        assertNull(output);
+        assertArrayEquals(expected, listNodeToArray(output));
     }
 }
