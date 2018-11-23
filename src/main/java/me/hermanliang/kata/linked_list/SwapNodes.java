@@ -65,6 +65,49 @@ public class SwapNodes {
      * @return result
      */
     public ListNode reverseKGroup(ListNode head, int k) {
-        return null;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode h = dummy;
+        ListNode cursor = head;
+        ListNode tn;
+        while (cursor != null) {
+            if (!hasValidGroup(cursor, k)) break;
+            ListNode next = move(cursor, k);
+            tn = reverse(cursor, k);
+            h.next = tn;
+            h = move(tn, k - 1);
+            h.next = next;
+            cursor = h.next;
+        }
+        return dummy.next;
+    }
+
+    private ListNode move(ListNode tn, int m) {
+        for (int i = 0; i < m; i++) {
+            tn = tn.next;
+        }
+        return tn;
+    }
+
+    private ListNode reverse(ListNode cursor, int k) {
+        ListNode prev = cursor;
+        cursor = cursor.next;
+        prev.next = null;
+        while (--k > 0) {
+            ListNode tn = cursor;
+            cursor = cursor.next;
+            tn.next = prev;
+            prev = tn;
+        }
+        return prev;
+    }
+
+    private boolean hasValidGroup(ListNode node, int k) {
+        ListNode cursor = node;
+        while (k > 0 && cursor != null) {
+            cursor = cursor.next;
+            k--;
+        }
+        return k == 0;
     }
 }
