@@ -53,6 +53,15 @@ public class RemoveDuplicate {
      * @return length of array after removing duplicates
      */
     public int removeDuplicates(int[] nums) {
-        return 0;
+        if (nums == null || nums.length == 0) return 0;
+        int num = nums[0];
+        int index = 1;
+        for (int n : nums) {
+            if (n != num) {
+                nums[index++] = n;
+                num = n;
+            }
+        }
+        return index;
     }
 }
