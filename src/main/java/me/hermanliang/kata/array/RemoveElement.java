@@ -58,6 +58,13 @@ public class RemoveElement {
      * @return length of array after removing elements
      */
     public int removeElement(int[] nums, int val) {
-        return 0;
+        if (nums == null || nums.length == 0) return 0;
+        int index = 0;
+        for (int num : nums) {
+            if (num != val) {
+                nums[index++] = num;
+            }
+        }
+        return index;
     }
 }
