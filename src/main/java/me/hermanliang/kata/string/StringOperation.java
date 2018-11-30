@@ -33,6 +33,16 @@ public class StringOperation {
      * @return index of the first occurrence of needle in haystack
      */
     public int strStr(String haystack, String needle) {
-        return 0;
+        if (needle.isEmpty()) return 0;
+        if (haystack == null ||
+                needle.length() > haystack.length()) return -1;
+        if (needle.length() == haystack.length()) return haystack.equals(needle) ? 0 : -1;
+        int len = needle.length();
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (strStr(haystack.substring(i, i + len), needle) == 0) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
