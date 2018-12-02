@@ -37,6 +37,29 @@ public class DivideInteger {
      * @return quotient
      */
     public int divide(int dividend, int divisor) {
-        return 0;
+        if (dividend == 0) return 0;
+        // overflow case
+        if (divisor == -1 && dividend == Integer.MIN_VALUE) return Integer.MAX_VALUE;
+        if (dividend == divisor) return 1;
+        if (divisor == 1) {
+            return dividend;
+        } else if (divisor == -1) {
+            return -dividend;
+        }
+        if (dividend >= 0 && divisor > 0) return getQuotient(-dividend, -divisor);
+        if (dividend >= 0 && divisor < 0) return -getQuotient(-dividend, divisor);
+        if (dividend < 0 && divisor > 0) return -getQuotient(dividend, -divisor);
+        if (dividend < 0 && divisor < 0) return getQuotient(dividend, divisor);
+
+        return -1; // not possible
+    }
+
+    private int getQuotient(int dividend, int divisor) {
+        int quotient = 0;
+        while (dividend <= divisor) {
+            dividend -= divisor;
+            quotient++;
+        }
+        return quotient;
     }
 }
