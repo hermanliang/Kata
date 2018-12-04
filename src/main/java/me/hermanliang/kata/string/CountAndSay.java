@@ -39,6 +39,22 @@ public class CountAndSay {
      * @return nth term of the count-and-say sequence
      */
     public String countAndSay(int n) {
-        return null;
+        String result = "1";
+        while (--n > 0) {
+            StringBuilder tmp = new StringBuilder();
+            char c = result.charAt(0);
+            int count = 1;
+            for (int i = 1; i < result.length(); i++) {
+                if (result.charAt(i) != c) {
+                    tmp.append(count).append(c);
+                    c = result.charAt(i);
+                    count = 1;
+                } else {
+                    count++;
+                }
+            }
+            result = tmp.append(count).append(c).toString();
+        }
+        return result;
     }
 }
