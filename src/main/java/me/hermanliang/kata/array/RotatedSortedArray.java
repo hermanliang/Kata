@@ -33,6 +33,40 @@ public class RotatedSortedArray {
      * @return index
      */
     public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (end >= start) {
+            int middle = start + (end - start) / 2;
+            if (nums[start] > nums[middle]) { // left part is not sorted
+                if (target >= nums[middle] && target <= nums[end]) {
+                    return binarySearch(nums, middle, end, target);
+                } else {
+                    end = middle - 1;
+                }
+            } else if (nums[end] < nums[middle]) { // right part is not sorted
+                if (target >= nums[start] && target <= nums[middle]) {
+                    return binarySearch(nums, start, middle, target);
+                } else {
+                    start = middle + 1;
+                }
+            } else { // sorted array
+                return binarySearch(nums, start, end, target);
+            }
+        }
+        return -1;
+    }
+
+    private int binarySearch(int[] nums, int start, int end, int target) {
+        while (end >= start) {
+            int middle = start + (end - start) / 2;
+            if (nums[middle] == target) {
+                return middle;
+            } else if (nums[middle] > target) {
+                end = middle - 1;
+            } else {
+                start = middle + 1;
+            }
+        }
         return -1;
     }
 }
