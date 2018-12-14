@@ -2,6 +2,9 @@ package me.hermanliang.kata.array;
 
 import me.hermanliang.kata.util.Interval;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -30,6 +33,28 @@ public class MergeIntervals {
      * @return merged intervals
      */
     public List<Interval> merge(List<Interval> intervals) {
-        return null;
+        // sort the interval list by start
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+        // use a linked list as data structure
+        LinkedList<Interval> output = new LinkedList<>();
+        for (Interval interval : intervals) {
+            if (output.isEmpty()) {
+                output.addLast(interval);
+            } else {
+                if (interval.start <= output.getLast().end) {
+                    // if present interval.start <= last interval.end,
+                    // update last interval.end by max interval.end between present and last
+                    output.getLast().end = Math.max(interval.end, output.getLast().end);
+                } else {
+                    output.addLast(interval);
+                }
+            }
+        }
+        return output;
     }
 }
