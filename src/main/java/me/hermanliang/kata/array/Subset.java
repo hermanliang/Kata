@@ -1,5 +1,6 @@
 package me.hermanliang.kata.array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +35,19 @@ public class Subset {
      * @return all possible subsets of the array
      */
     public List<List<Integer>> subsets(int[] nums) {
-        return null;
+        List<List<Integer>> container = new ArrayList<>();
+        subsets(container, new ArrayList<>(), 0, nums);
+        return container;
+    }
+
+    private void subsets(List<List<Integer>> container, List<Integer> holder, int index, int[] nums) {
+        if (index == nums.length) {
+            container.add(holder);
+            return;
+        }
+        subsets(container, new ArrayList<>(holder), index + 1, nums);
+        int n = nums[index];
+        holder.add(n);
+        subsets(container, new ArrayList<>(holder), index + 1, nums);
     }
 }
