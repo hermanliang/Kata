@@ -31,47 +31,26 @@ public class WordSearch {
      * @return the word is exist in the board
      */
     public boolean exist(char[][] board, String word) {
-        char c = word.charAt(0);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == c) {
-                    board[i][j] = '#';
-                    if (exist(board, word, i, j, 1)) return true;
-                    board[i][j] = c;
-                }
+                if (exist(board, word, i, j, 0)) return true;
             }
         }
         return false;
     }
 
     private boolean exist(char[][] board, String word, int i, int j, int k) {
-        if (k == word.length()) {
-            return true;
-        }
         char c = word.charAt(k++);
-        // left
-        if (j > 0 && board[i][j - 1] == c) {
-            board[i][j - 1] = '#';
-            if (exist(board, word, i, j - 1, k)) return true;
-            board[i][j - 1] = c;
-        }
-        // top
-        if (i > 0 && board[i - 1][j] == c) {
-            board[i - 1][j] = '#';
-            if (exist(board, word, i - 1, j, k)) return true;
-            board[i - 1][j] = c;
-        }
-        // right
-        if (j < board[0].length - 1 && board[i][j + 1] == c) {
-            board[i][j + 1] = '#';
-            if (exist(board, word, i, j + 1, k)) return true;
-            board[i][j + 1] = c;
-        }
-        // bottom
-        if (i < board.length - 1 && board[i + 1][j] == c) {
-            board[i + 1][j] = '#';
-            if (exist(board, word, i + 1, j, k)) return true;
-            board[i + 1][j] = c;
+        if (board[i][j] == c) {
+            if (k == word.length()) {
+                return true;
+            }
+            board[i][j] = '#';
+            if (j > 0 && exist(board, word, i, j - 1, k)) return true;
+            if (i > 0 && exist(board, word, i - 1, j, k)) return true;
+            if (j < board[0].length - 1 && exist(board, word, i, j + 1, k)) return true;
+            if (i < board.length - 1 && exist(board, word, i + 1, j, k)) return true;
+            board[i][j] = c;
         }
         return false;
     }
