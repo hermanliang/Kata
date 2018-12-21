@@ -3,6 +3,8 @@ package me.hermanliang.kata.array;
 /**
  * @see <a href="https://leetcode.com/problems/median-of-two-sorted-arrays/description/">
  * https://leetcode.com/problems/median-of-two-sorted-arrays/description/</a>
+ * @see <a href="https://leetcode.com/problems/merge-sorted-array/description/">
+ * https://leetcode.com/problems/merge-sorted-array/description/</a>
  */
 public class SortedArray {
 
@@ -72,4 +74,29 @@ public class SortedArray {
         return 0.0;
     }
 
+    /**
+     * 88. Merge Sorted Array [Easy]
+     * <p>
+     * Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+     * <p>
+     * Note:
+     * <p>
+     * The number of elements initialized in nums1 and nums2 are m and n respectively.
+     * You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
+     * Example:
+     * <p>
+     * Input:
+     * nums1 = [1,2,3,0,0,0], m = 3
+     * nums2 = [2,5,6],       n = 3
+     * <p>
+     * Output: [1,2,2,3,5,6]
+     *
+     * @param nums1 sorted array with space >= (m + n)
+     * @param m     number of elements in nums1
+     * @param nums2 sorted array
+     * @param n     number of elements in nums2
+     */
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+    }
 }
