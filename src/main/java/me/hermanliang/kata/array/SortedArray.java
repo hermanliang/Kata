@@ -97,6 +97,21 @@ public class SortedArray {
      * @param n     number of elements in nums2
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-
+        // two pointer approach
+        // set data from index (m + n - 1) to 0, use k to identify the set data index
+        // get nums1 element from index m - 1 to 0, use i to identify index of nums1 element
+        // get nums2 element from index n - 1 to 0, use j to identify index of nums2 element
+        // if nums1[i] > nums2[j] -> nums1[k--] = nums1[i--]
+        // else nums1[k--] = nums2[j--]
+        int i = m - 1;
+        int j = n - 1;
+        int k  = m + n - 1;
+        while (j >= 0) {
+            if (i >= 0 && nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
     }
 }
