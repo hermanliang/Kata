@@ -2,7 +2,10 @@ package me.hermanliang.kata.tree;
 
 import me.hermanliang.kata.util.TreeNode;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @see <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/">
@@ -35,6 +38,27 @@ public class BinaryTree {
      * @return level order traversal of the TreeNode
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
-        return null;
+        List<List<Integer>> output = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> next = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node != null) {
+                list.add(node.val);
+                next.add(node.left);
+                next.add(node.right);
+            }
+            if (queue.isEmpty()) {
+                if (!list.isEmpty()) {
+                    output.add(list);
+                    list = new ArrayList<>();
+                }
+                queue = next;
+                next = new LinkedList<>();
+            }
+        }
+        return output;
     }
 }
