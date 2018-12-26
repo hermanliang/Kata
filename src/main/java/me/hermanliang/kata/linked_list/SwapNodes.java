@@ -65,49 +65,47 @@ public class SwapNodes {
      * @return result
      */
     public ListNode reverseKGroup(ListNode head, int k) {
+        // make a dummy head
         ListNode dummy = new ListNode(0);
-        dummy.next = head;
         ListNode h = dummy;
-        ListNode cursor = head;
-        ListNode tn;
-        while (cursor != null) {
-            if (!hasValidGroup(cursor, k)) break;
-            ListNode next = move(cursor, k);
-            tn = reverse(cursor, k);
-            h.next = tn;
-            h = move(tn, k - 1);
-            h.next = next;
-            cursor = h.next;
+        while (head != null) {
+            if (isValid(head, k)) {
+                ListNode next = getNode(head, k); // get node of index k
+                h.next = reverseKNode(head, k); // reverse head k nodes
+                head = next;
+                h = getNode(h, k);
+            } else {
+                h.next = head;
+                break;
+            }
         }
         return dummy.next;
     }
 
-    private ListNode move(ListNode tn, int m) {
-        for (int i = 0; i < m; i++) {
-            tn = tn.next;
+    private boolean isValid(ListNode head, int k) {
+        while (k-- > 0) {
+            if (head == null) return false;
+            head = head.next;
         }
-        return tn;
+        return true;
     }
 
-    private ListNode reverse(ListNode cursor, int k) {
-        ListNode prev = cursor;
-        cursor = cursor.next;
-        prev.next = null;
+    private ListNode getNode(ListNode head, int k) {
+        while (k-- > 0) {
+            head = head.next;
+        }
+        return head;
+    }
+
+    private ListNode reverseKNode(ListNode head, int k) {
+        ListNode next = head.next;
+        head.next = null;
         while (--k > 0) {
-            ListNode tn = cursor;
-            cursor = cursor.next;
-            tn.next = prev;
-            prev = tn;
+            ListNode tmp = next.next;
+            next.next = head;
+            head = next;
+            next = tmp;
         }
-        return prev;
-    }
-
-    private boolean hasValidGroup(ListNode node, int k) {
-        ListNode cursor = node;
-        while (k > 0 && cursor != null) {
-            cursor = cursor.next;
-            k--;
-        }
-        return k == 0;
+        return head;
     }
 }
