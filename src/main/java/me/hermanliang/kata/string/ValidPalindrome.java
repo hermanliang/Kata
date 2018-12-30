@@ -26,6 +26,27 @@ public class ValidPalindrome {
      * @return is the string palindrome
      */
     public boolean isPalindrome(String s) {
-        return false;
+        s = s.toLowerCase();
+        int start = 0;
+        int end = s.length() - 1;
+        char sc;
+        char ec;
+        boolean pass;
+        while (end > start) {
+            sc = s.charAt(start);
+            ec = s.charAt(end);
+            pass = false;
+            if ((sc < 'a' || sc > 'z') && (sc < '0' || sc > '9')) {
+                start++;
+                pass = true;
+            }
+            if ((ec < 'a' || ec > 'z') && (ec < '0' || ec > '9')) {
+                end--;
+                pass = true;
+            }
+            if (pass) continue;
+            if (s.charAt(start++) != s.charAt(end--)) return false;
+        }
+        return true;
     }
 }
