@@ -50,6 +50,37 @@ public class WordLadder {
      * @return shortest transformation steps
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (!wordList.contains(endWord)) return 0;
+        Queue<String> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+        queue.offer(beginWord);
+        int level = 1;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String node = queue.poll();
+                if (isLadder(node, endWord)) return level + 1;
+                for (String word : wordList) {
+                    if (visited.contains(word)) continue;
+                    if (isLadder(node, word)) {
+                        visited.add(word);
+                        queue.offer(word);
+                    }
+                }
+            }
+            level++;
+        }
         return 0;
+    }
+
+    private boolean isLadder(String w1, String w2) {
+        boolean onediff = false;
+        for (int i = 0; i < w1.length(); i++) {
+            if (w1.charAt(i) != w2.charAt(i)) {
+                if (onediff) return false;
+                onediff = true;
+            }
+        }
+        return onediff;
     }
 }
