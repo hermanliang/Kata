@@ -51,20 +51,29 @@ public class WordLadder {
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if (!wordList.contains(endWord)) return 0;
-        Queue<String> queue = new LinkedList<>();
+        Queue<String> beginQueue = new LinkedList<>();
+        Queue<String> endQueue = new LinkedList<>();
         Set<String> visited = new HashSet<>();
-        queue.offer(beginWord);
+        beginQueue.offer(beginWord);
+        endQueue.offer(endWord);
         int level = 1;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
+        while (!beginQueue.isEmpty() && !endQueue.isEmpty()) {
+            if (beginQueue.size() > endQueue.size()) {
+                Queue<String> queue = beginQueue;
+                beginQueue = endQueue;
+                endQueue = queue;
+            }
+            int size = beginQueue.size();
             for (int i = 0; i < size; i++) {
-                String node = queue.poll();
-                if (isLadder(node, endWord)) return level + 1;
+                String node = beginQueue.poll();
+                for (String ew : endQueue) {
+                    if (isLadder(node, ew)) return level + 1;
+                }
                 for (String word : wordList) {
                     if (visited.contains(word)) continue;
                     if (isLadder(node, word)) {
                         visited.add(word);
-                        queue.offer(word);
+                        beginQueue.offer(word);
                     }
                 }
             }
