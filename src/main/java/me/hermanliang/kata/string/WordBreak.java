@@ -1,6 +1,8 @@
 package me.hermanliang.kata.string;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @see <a href="https://leetcode.com/problems/word-break/description/">
@@ -39,6 +41,22 @@ public class WordBreak {
      * @return the string can be segmented into a space-separated sequence of one or more dictionary words.
      */
     public boolean wordBreak(String s, List<String> wordDict) {
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(s);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                String node = queue.poll();
+                for (String word : wordDict) {
+                    if (node.indexOf(word) == 0) {
+                        String cut = node.substring(word.length());
+                        if (cut.isEmpty()) return true;
+                        if (!queue.contains(cut))
+                            queue.offer(cut);
+                    }
+                }
+            }
+        }
         return false;
     }
 }
