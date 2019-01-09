@@ -2,8 +2,7 @@ package me.hermanliang.kata.tree;
 
 import me.hermanliang.kata.util.TreeNode;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @see <a href="https://leetcode.com/problems/binary-search-tree-iterator/description/">
@@ -11,7 +10,8 @@ import java.util.Queue;
  */
 public class BSTIterator {
 
-    private Queue<Integer> queue;
+    private TreeNode visit;
+    private Stack<TreeNode> stack;
 
     /**
      * 173. Binary Search Tree Iterator [Medium]
@@ -28,29 +28,27 @@ public class BSTIterator {
      * @param root a TreeNode
      */
     public BSTIterator(TreeNode root) {
-        queue = process(root);
+        this.visit = root;
+        this.stack = new Stack<>();
     }
 
     /**
      * @return whether we have a next smallest number
      */
     public boolean hasNext() {
-        return !queue.isEmpty();
+        return visit != null || !stack.isEmpty();
     }
 
     /**
      * @return the next smallest number
      */
     public int next() {
-        return queue.poll();
-    }
-
-    private Queue<Integer> process(TreeNode root) {
-        Queue<Integer> q = new LinkedList<>();
-        if (root == null) return q;
-        q.addAll(process(root.left));
-        q.add(root.val);
-        q.addAll(process(root.right));
-        return q;
+        while (visit != null) {
+            stack.push(visit);
+            visit = visit.left;
+        }
+        TreeNode next = stack.pop();
+        visit = next.right;
+        return next.val;
     }
 }
