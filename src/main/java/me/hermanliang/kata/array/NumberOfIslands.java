@@ -1,8 +1,5 @@
 package me.hermanliang.kata.array;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * @see <a href="https://leetcode.com/problems/number-of-islands/description/">
  * https://leetcode.com/problems/number-of-islands/description/</a>
@@ -52,29 +49,14 @@ public class NumberOfIslands {
     }
 
     private void wipeIsland(char[][] grid, int i, int j) {
-        Queue<Integer[]> queue = new LinkedList<>();
+        int m = grid.length;
+        int n = grid[0].length;
+        if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] == '0') return;
+
         grid[i][j] = '0';
-        queue.add(new Integer[]{i, j});
-        while (!queue.isEmpty()) {
-            Integer[] pos = queue.poll();
-            int x = pos[0];
-            int y = pos[1];
-            if (x > 0 && grid[x - 1][y] == '1') {
-                grid[x - 1][y] = '0';
-                queue.add(new Integer[]{x - 1, y});
-            }
-            if (y > 0 && grid[x][y - 1] == '1') {
-                grid[x][y - 1] = '0';
-                queue.add(new Integer[]{x, y - 1});
-            }
-            if (x < grid.length - 1 && grid[x + 1][y] == '1') {
-                grid[x + 1][y] = '0';
-                queue.add(new Integer[]{x + 1, y});
-            }
-            if (y < grid[0].length - 1 && grid[x][y + 1] == '1') {
-                grid[x][y + 1] = '0';
-                queue.add(new Integer[]{x, y + 1});
-            }
-        }
+        wipeIsland(grid, i + 1, j);
+        wipeIsland(grid, i - 1, j);
+        wipeIsland(grid, i, j + 1);
+        wipeIsland(grid, i, j - 1);
     }
 }
