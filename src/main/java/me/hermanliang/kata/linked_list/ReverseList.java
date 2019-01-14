@@ -25,6 +25,15 @@ public class ReverseList {
      * @return reversed ListNode
      */
     public ListNode reverseList(ListNode head) {
-        return null;
+        if (head == null) return null;
+        ListNode next = head.next;
+        head.next = null;
+        while (next != null) {
+            ListNode tmp = next.next;
+            next.next = head;
+            head = next;
+            next = tmp;
+        }
+        return head;
     }
 }
