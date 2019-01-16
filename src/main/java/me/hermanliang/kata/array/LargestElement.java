@@ -1,5 +1,8 @@
 package me.hermanliang.kata.array;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * @see <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/">
  * https://leetcode.com/problems/kth-largest-element-in-an-array/description/</a>
@@ -28,6 +31,19 @@ public class LargestElement {
      * @return kth largest element in the sorted integer array
      */
     public int findKthLargest(int[] nums, int k) {
-        return 0;
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(nums.length, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
+        for (int num : nums) {
+            priorityQueue.add(num);
+        }
+        int output = 0;
+        while (k-- > 0) {
+            output = priorityQueue.poll();
+        }
+        return output;
     }
 }
