@@ -2,6 +2,8 @@ package me.hermanliang.kata.linked_list;
 
 import me.hermanliang.kata.util.ListNode;
 
+import java.util.Stack;
+
 /**
  * @see <a href="https://leetcode.com/problems/palindrome-linked-list/description/">
  * https://leetcode.com/problems/palindrome-linked-list/description/</a>
@@ -28,6 +30,23 @@ public class PalindromeList {
      * @return is the ListNode a palindrome
      */
     public boolean isPalindrome(ListNode head) {
-        return false;
+        ListNode tmp = head;
+        int len = 0;
+        while (tmp != null) {
+            len++;
+            tmp = tmp.next;
+        }
+        int half = len / 2;
+        Stack<Integer> stack = new Stack<>();
+        while (half-- > 0) {
+            stack.push(head.val);
+            head = head.next;
+        }
+        if (len % 2 == 1) head = head.next;
+        while (head != null) {
+            if (stack.pop() != head.val) return false;
+            head = head.next;
+        }
+        return true;
     }
 }
