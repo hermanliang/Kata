@@ -9,9 +9,7 @@ public class BSTIteratorTest {
 
     @Test
     public void integrationTest() {
-        TreeNode root = new TreeNode(2);
-        root.left = new TreeNode(1);
-        root.right = new TreeNode(3);
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{2, 1, 3});
         BSTIterator iterator = new BSTIterator(root);
         assertTrue(iterator.hasNext());
         assertEquals(1, iterator.next());
