@@ -41,6 +41,13 @@ public class BinarySearchTree {
      * @return lowest common ancestor in p and q
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        return null;
+        if (root == null || root == p || root == q) return root;
+        if (p.val > root.val) {
+            if (q.val < root.val) return root;
+            return lowestCommonAncestor(root.right, p, q);
+        } else {
+            if (q.val > root.val) return root;
+            return lowestCommonAncestor(root.left, p, q);
+        }
     }
 }
