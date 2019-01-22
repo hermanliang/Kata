@@ -25,4 +25,22 @@ public class BinaryTreeTest {
             }
         }
     }
+
+    @Test
+    public void lowestCommonAncestor1() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4});
+        TreeNode p = root.left;
+        TreeNode q = root.right;
+        TreeNode expected = root;
+        assertEquals(expected, new BinaryTree().lowestCommonAncestor(root, p, q));
+    }
+
+    @Test
+    public void lowestCommonAncestor2() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 5, 1, 6, 2, 0, 8, null, null, 7, 4});
+        TreeNode p = root.left;
+        TreeNode q = p.right.right;
+        TreeNode expected = p;
+        assertEquals(expected, new BinaryTree().lowestCommonAncestor(root, p, q));
+    }
 }
