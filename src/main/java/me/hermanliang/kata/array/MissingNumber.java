@@ -28,6 +28,13 @@ public class MissingNumber {
      * @return the missing number
      */
     public int missingNumber(int[] nums) {
-        return 0;
+        boolean[] visited = new boolean[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            visited[nums[i]] = true;
+        }
+        for (int i = 0; i < visited.length; i++) {
+            if (!visited[i]) return i;
+        }
+        return -1;
     }
 }
