@@ -3,6 +3,7 @@ package me.hermanliang.kata.linked_list;
 import me.hermanliang.kata.util.NestedInteger;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
  * https://leetcode.com/problems/flatten-nested-list-iterator/description/</a>
  */
 public class NestedIterator implements Iterator<Integer> {
+
+    LinkedList<Integer> queue;
 
     /**
      * 341. Flatten Nested List Iterator [Medium]
@@ -34,16 +37,28 @@ public class NestedIterator implements Iterator<Integer> {
      * @param nestedList a nested list of integers
      */
     public NestedIterator(List<NestedInteger> nestedList) {
-
+        this.queue = flatten(nestedList);
     }
 
     @Override
     public boolean hasNext() {
-        return false;
+        return !queue.isEmpty();
     }
 
     @Override
     public Integer next() {
-        return null;
+        return queue.poll();
+    }
+
+    private LinkedList<Integer> flatten(List<NestedInteger> nestedList) {
+        LinkedList<Integer> list = new LinkedList<>();
+        for (NestedInteger i : nestedList) {
+            if (i.isInteger()) {
+                list.add(i.getInteger());
+            } else {
+                list.addAll(flatten(i.getList()));
+            }
+        }
+        return list;
     }
 }
