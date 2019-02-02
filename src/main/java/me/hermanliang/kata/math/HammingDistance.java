@@ -35,6 +35,11 @@ public class HammingDistance {
      * @return Hamming distance between x and y
      */
     public int hammingDistance(int x, int y) {
-        return 0;
+        int z = x ^ y;
+        int count = 0;
+        for (int i = 0; i < 32; i++) {
+            count += (z >> i & 1);
+        }
+        return count;
     }
 }
