@@ -1,5 +1,8 @@
 package me.hermanliang.kata.string;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @see <a href="https://leetcode.com/problems/palindromic-substrings/description/">
  * https://leetcode.com/problems/palindromic-substrings/description/</a>
@@ -32,6 +35,24 @@ public class PalindromicSubstrings {
      * @return number of palindromic substrings in the string
      */
     public int countSubstrings(String s) {
-        return 0;
+        Set<String> visited = new HashSet<>();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int left = i;
+            int right = i;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                count++;
+                left--;
+                right++;
+            }
+            left = i;
+            right = i + 1;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                count++;
+                left--;
+                right++;
+            }
+        }
+        return count;
     }
 }
