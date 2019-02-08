@@ -1,5 +1,10 @@
 package me.hermanliang.kata.hash;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @see <a href="https://leetcode.com/problems/valid-sudoku/description/">
  * https://leetcode.com/problems/valid-sudoku/description/</a>
@@ -63,6 +68,26 @@ public class ValidSudoku {
      * @return is valid Sudoku
      */
     public boolean isValidSudoku(char[][] board) {
-        return false;
+        Map<String, Set<Integer>> map = new HashMap<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char c = board[i][j];
+                if (c == '.') continue;
+                int digit = c - '0';
+                String rowKey = "r" + i;
+                String colKey = "c" + j;
+                String boxKey = "b" + (i / 3) + (j / 3);
+                if (!map.containsKey(rowKey)) map.put(rowKey, new HashSet<>());
+                if (!map.containsKey(colKey)) map.put(colKey, new HashSet<>());
+                if (!map.containsKey(boxKey)) map.put(boxKey, new HashSet<>());
+                if (map.get(rowKey).contains(digit)) return false;
+                else map.get(rowKey).add(digit);
+                if (map.get(colKey).contains(digit)) return false;
+                else map.get(colKey).add(digit);
+                if (map.get(boxKey).contains(digit)) return false;
+                else map.get(boxKey).add(digit);
+            }
+        }
+        return true;
     }
 }
