@@ -1,6 +1,6 @@
 package me.hermanliang.kata.array;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @see <a href="https://leetcode.com/problems/combination-sum/description/">
@@ -43,6 +43,29 @@ public class CombinationSum {
      * @return output
      */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        return null;
+        Arrays.sort(candidates);
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<Integer> q1 = new LinkedList<>();
+        Queue<List<Integer>> q2 = new LinkedList<>();
+        q1.offer(target);
+        q2.offer(new ArrayList<>());
+        while (!q1.isEmpty()) {
+            int t = q1.poll();
+            List<Integer> list = q2.poll();
+            for (int num : candidates) {
+                if (num == t) {
+                    if (!list.isEmpty() && list.get(list.size() - 1) > num) continue;
+                    list.add(num);
+                    result.add(list);
+                } else if (t > num) {
+                    if (!list.isEmpty() && list.get(list.size() - 1) > num) continue;
+                    q1.offer(t - num);
+                    List<Integer> l = new ArrayList<>(list);
+                    l.add(num);
+                    q2.offer(l);
+                }
+            }
+        }
+        return result;
     }
 }
