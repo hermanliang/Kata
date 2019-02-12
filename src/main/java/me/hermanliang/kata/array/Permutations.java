@@ -1,5 +1,6 @@
 package me.hermanliang.kata.array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,21 @@ public class Permutations {
      * @return all possible permutations
      */
     public List<List<Integer>> permute(int[] nums) {
-        return null;
+        return permute(nums, new ArrayList<>());
+    }
+
+    private List<List<Integer>> permute(int[] nums, List<Integer> list) {
+        List<List<Integer>> ret = new ArrayList<>();
+        if (nums.length == list.size()) {
+            ret.add(list);
+            return ret;
+        }
+        for (int n : nums) {
+            if (list.contains(n)) continue;
+            List<Integer> l = new ArrayList<>(list);
+            l.add(n);
+            ret.addAll(permute(nums, l));
+        }
+        return ret;
     }
 }
