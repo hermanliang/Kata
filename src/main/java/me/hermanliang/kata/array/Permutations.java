@@ -31,21 +31,20 @@ public class Permutations {
      * @return all possible permutations
      */
     public List<List<Integer>> permute(int[] nums) {
-        return permute(nums, new ArrayList<>());
+        List<List<Integer>> ret = new ArrayList<>();
+        permute(ret, nums, new ArrayList<>());
+        return ret;
     }
 
-    private List<List<Integer>> permute(int[] nums, List<Integer> list) {
-        List<List<Integer>> ret = new ArrayList<>();
+    private void permute(List<List<Integer>> ret, int[] nums, List<Integer> list) {
         if (nums.length == list.size()) {
-            ret.add(list);
-            return ret;
+            ret.add(new ArrayList<>(list));
         }
         for (int n : nums) {
             if (list.contains(n)) continue;
-            List<Integer> l = new ArrayList<>(list);
-            l.add(n);
-            ret.addAll(permute(nums, l));
+            list.add(n);
+            permute(ret, nums, list);
+            list.remove(list.size() - 1);
         }
-        return ret;
     }
 }
