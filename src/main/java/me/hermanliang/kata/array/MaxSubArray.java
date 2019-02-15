@@ -26,6 +26,18 @@ public class MaxSubArray {
      * @return largest sum of subarray
      */
     public int maxSubArray(int[] nums) {
-        return 0;
+        // dp[i]: max sum of sub array which end with nums[i]
+        // which must >= nums[i]
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int max = dp[0];
+        for (int i = 1; i < nums.length; i++) {
+            // dp = [-2, 1, -2, 4, 3, 5, 6, 1, 5]
+            // if dp[i - 1] < 0, it is a negative effect on sum of sub array
+            // so treat nums[i] as the start of sub array
+            dp[i] = nums[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
+            max = Math.max(max, dp[i]);
+        }
+        return max;
     }
 }
