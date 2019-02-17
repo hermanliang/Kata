@@ -31,6 +31,20 @@ public class PlusOne {
      * @return an array which plus one to the integer
      */
     public int[] plusOne(int[] digits) {
-        return new int[0];
+        int index = digits.length - 1;
+        int carry = 1;
+        while (carry > 0 && index >= 0) {
+            int last = digits[index] + carry;
+            carry = last / 10;
+            digits[index--] = last % 10;
+        }
+        if (carry > 0) {
+            int[] result = new int[digits.length + 1];
+            result[0] = carry;
+            System.arraycopy(digits, 0, result, 1, digits.length);
+            return result;
+        } else {
+            return digits;
+        }
     }
 }
