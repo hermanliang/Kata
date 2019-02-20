@@ -6,6 +6,8 @@ import java.util.Set;
 /**
  * @see <a href="https://leetcode.com/problems/set-matrix-zeroes/">
  * https://leetcode.com/problems/set-matrix-zeroes/</a>
+ * @see <a href="https://leetcode.com/problems/search-a-2d-matrix/">
+ * https://leetcode.com/problems/search-a-2d-matrix/</a>
  */
 public class Matrix {
 
@@ -87,5 +89,42 @@ public class Matrix {
                 matrix[i][col] = 0;
             }
         }
+    }
+
+    /**
+     * 74. Search a 2D Matrix [Medium]
+     * <p>
+     * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+     * <p>
+     * Integers in each row are sorted from left to right.
+     * The first integer of each row is greater than the last integer of the previous row.
+     * <p>
+     * Example 1:
+     * <p>
+     * Input:
+     * matrix = [
+     * [1,   3,  5,  7],
+     * [10, 11, 16, 20],
+     * [23, 30, 34, 50]
+     * ]
+     * target = 3
+     * Output: true
+     * Example 2:
+     * <p>
+     * Input:
+     * matrix = [
+     * [1,   3,  5,  7],
+     * [10, 11, 16, 20],
+     * [23, 30, 34, 50]
+     * ]
+     * target = 13
+     * Output: false
+     *
+     * @param matrix a matrix
+     * @param target search target
+     * @return does the matrix has target
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        return false;
     }
 }

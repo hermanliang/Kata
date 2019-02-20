@@ -3,6 +3,7 @@ package me.hermanliang.kata.array;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class MatrixTest {
 
@@ -43,4 +44,27 @@ public class MatrixTest {
         }
     }
 
+    @Test
+    public void searchMatrix1() {
+        int[][] matrix = {
+                {1, 3, 5, 7},
+                {10, 11, 16, 20},
+                {23, 30, 34, 50}
+        };
+        int target = 3;
+        boolean expected = true;
+        assertEquals(expected, new Matrix().searchMatrix(matrix, target));
+    }
+
+    @Test
+    public void searchMatrix2() {
+        int[][] matrix = {
+                {1, 3, 5, 7},
+                {10, 11, 16, 20},
+                {23, 30, 34, 50}
+        };
+        int target = 13;
+        boolean expected = false;
+        assertEquals(expected, new Matrix().searchMatrix(matrix, target));
+    }
 }
