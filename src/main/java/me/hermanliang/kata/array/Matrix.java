@@ -125,6 +125,20 @@ public class Matrix {
      * @return does the matrix has target
      */
     public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null) return false;
+        int m = matrix.length;
+        if (m == 0) return false;
+        int n = matrix[0].length;
+        int start = 0;
+        int end = m * n - 1;
+        while (end >= start) {
+            int mid = start + (end - start) / 2;
+            int row = mid / n;
+            int col = mid % n;
+            if (matrix[row][col] == target) return true;
+            else if (matrix[row][col] > target) end = mid - 1;
+            else start = mid + 1;
+        }
         return false;
     }
 }
