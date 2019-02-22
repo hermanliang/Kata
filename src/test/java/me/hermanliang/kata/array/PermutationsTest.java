@@ -16,6 +16,18 @@ public class PermutationsTest {
         int[] nums = {1, 2, 3};
         List<List<Integer>> output = new Permutations().permute(nums);
         assertEquals(6, output.size());
+        verifyPermutations(nums, output);
+    }
+
+    @Test
+    public void permuteUnique() {
+        int[] nums = {1, 1, 2};
+        List<List<Integer>> output = new Permutations().permuteUnique(nums);
+        assertEquals(3, output.size());
+        verifyPermutations(nums, output);
+    }
+
+    private void verifyPermutations(int[] nums, List<List<Integer>> output) {
         Set<String> visited = new HashSet<>();
         for (List<Integer> integers : output) {
             StringBuilder sb = new StringBuilder();

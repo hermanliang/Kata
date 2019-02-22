@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * @see <a href="https://leetcode.com/problems/permutations/description/">
  * https://leetcode.com/problems/permutations/description/</a>
+ * @see <a href="https://leetcode.com/problems/permutations-ii/">
+ * https://leetcode.com/problems/permutations-ii/</a>
  */
 public class Permutations {
 
@@ -46,5 +48,27 @@ public class Permutations {
             permute(ret, nums, list);
             list.remove(list.size() - 1);
         }
+    }
+
+    /**
+     * 47. Permutations II [Medium]
+     * <p>
+     * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+     * <p>
+     * Example:
+     * <p>
+     * Input: [1,1,2]
+     * Output:
+     * [
+     * [1,1,2],
+     * [1,2,1],
+     * [2,1,1]
+     * ]
+     *
+     * @param nums an integer array
+     * @return all possible unique permutations
+     */
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        return null;
     }
 }
