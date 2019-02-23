@@ -1,6 +1,7 @@
 package me.hermanliang.kata.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -69,6 +70,25 @@ public class Permutations {
      * @return all possible unique permutations
      */
     public List<List<Integer>> permuteUnique(int[] nums) {
-        return null;
+        Arrays.sort(nums);
+        List<List<Integer>> ret = new ArrayList<>();
+        permute(ret, new ArrayList<>(), new boolean[nums.length], nums);
+        return ret;
+    }
+
+    private void permute(List<List<Integer>> ret, List<Integer> list, boolean[] used, int[] nums) {
+        if (list.size() == nums.length) {
+            ret.add(new ArrayList<>(list));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) continue;
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
+            list.add(nums[i]);
+            used[i] = true;
+            permute(ret, list, used, nums);
+            list.remove(list.size() - 1);
+            used[i] = false;
+        }
     }
 }
