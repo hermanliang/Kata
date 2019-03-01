@@ -57,6 +57,31 @@ public class ReverseList {
      * @return reverse ListNode from position m to n
      */
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        return null;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        int steps = n - m;
+        ListNode cursor = dummy;
+        while (m-- > 1) {
+            cursor = cursor.next;
+        }
+        ListNode preEnd = cursor;
+        cursor = cursor.next;
+        cursor = reversePartial(cursor, steps);
+        preEnd.next = cursor;
+        return dummy.next;
+    }
+
+    private ListNode reversePartial(ListNode head, int steps) {
+        ListNode next = head.next;
+        ListNode midEnd = head;
+        head.next = null;
+        while (steps-- > 0) {
+            ListNode tmp = next.next;
+            next.next = head;
+            head = next;
+            next = tmp;
+        }
+        midEnd.next = next;
+        return head;
     }
 }
