@@ -2,6 +2,9 @@ package me.hermanliang.kata.tree;
 
 import me.hermanliang.kata.util.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @see <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/">
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/</a>
@@ -84,6 +87,14 @@ public class BinarySearchTree {
      * @return is the TreeNode a valid BST
      */
     public boolean isValidBST(TreeNode root) {
-        return false;
+        return validate(root, new ArrayList<>());
+    }
+
+    private boolean validate(TreeNode root, List<Integer> list) {
+        if (root == null) return true;
+        if (!validate(root.left, list)) return false;
+        if (!list.isEmpty() && list.get(list.size() - 1) >= root.val) return false;
+        list.add(root.val);
+        return validate(root.right, list);
     }
 }
