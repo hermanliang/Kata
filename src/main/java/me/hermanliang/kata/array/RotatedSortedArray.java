@@ -3,6 +3,8 @@ package me.hermanliang.kata.array;
 /**
  * @see <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/">
  * https://leetcode.com/problems/search-in-rotated-sorted-array/description/</a>
+ * @see <a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/">
+ * https://leetcode.com/problems/search-in-rotated-sorted-array-ii/</a>
  */
 public class RotatedSortedArray {
 
@@ -68,5 +70,35 @@ public class RotatedSortedArray {
             }
         }
         return -1;
+    }
+
+    /**
+     * 81. Search in Rotated Sorted Array II (Medium)
+     * <p>
+     * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+     * <p>
+     * (i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]).
+     * <p>
+     * You are given a target value to search. If found in the array return true, otherwise return false.
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: nums = [2,5,6,0,0,1,2], target = 0
+     * Output: true
+     * Example 2:
+     * <p>
+     * Input: nums = [2,5,6,0,0,1,2], target = 3
+     * Output: false
+     * Follow up:
+     * <p>
+     * This is a follow up problem to Search in Rotated Sorted Array, where nums may contain duplicates.
+     * Would this affect the run-time complexity? How and why?
+     *
+     * @param nums   a rotated sorted array
+     * @param target target value to search
+     * @return has target
+     */
+    public boolean searchWithDuplicate(int[] nums, int target) {
+        return false;
     }
 }
