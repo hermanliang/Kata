@@ -43,4 +43,28 @@ public class BinaryTreeTest {
         TreeNode expected = p;
         assertEquals(expected, new BinaryTree().lowestCommonAncestor(root, p, q));
     }
+
+    @Test
+    public void isSameTree1() {
+        TreeNode p = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 3});
+        TreeNode q = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 3});
+        boolean expected = true;
+        assertEquals(expected, new BinaryTree().isSameTree(p, q));
+    }
+
+    @Test
+    public void isSameTree2() {
+        TreeNode p = TreeNode.arrayToTreeNode(new Integer[]{1, 2});
+        TreeNode q = TreeNode.arrayToTreeNode(new Integer[]{1, null, 2});
+        boolean expected = false;
+        assertEquals(expected, new BinaryTree().isSameTree(p, q));
+    }
+
+    @Test
+    public void isSameTree3() {
+        TreeNode p = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 1});
+        TreeNode q = TreeNode.arrayToTreeNode(new Integer[]{1, 1, 2});
+        boolean expected = false;
+        assertEquals(expected, new BinaryTree().isSameTree(p, q));
+    }
 }

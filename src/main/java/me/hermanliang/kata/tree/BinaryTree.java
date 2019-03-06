@@ -12,6 +12,8 @@ import java.util.Queue;
  * https://leetcode.com/problems/binary-tree-level-order-traversal/description/</a>
  * @see <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/">
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/</a>
+ * @see <a href="https://leetcode.com/problems/same-tree/">
+ * https://leetcode.com/problems/same-tree/</a>
  */
 public class BinaryTree {
 
@@ -106,5 +108,51 @@ public class BinaryTree {
             return left;
         }
         return root;
+    }
+
+    /**
+     * 100. Same Tree [Easy]
+     * <p>
+     * Given two binary trees, write a function to check if they are the same or not.
+     * <p>
+     * Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+     * <p>
+     * Example 1:
+     * <p>
+     * Input:     1         1
+     *           / \       / \
+     *          2   3     2   3
+     *
+     *         [1,2,3],   [1,2,3]
+     *
+     * <p>
+     * Output: true
+     * Example 2:
+     * <p>
+     * Input:     1         1
+     *           /           \
+     *          2             2
+     *
+     *         [1,2],     [1,null,2]
+     *
+     * <p>
+     * Output: false
+     * Example 3:
+     * <p>
+     * Input:     1         1
+     *           / \       / \
+     *          2   1     1   2
+     *
+     *         [1,2,1],   [1,1,2]
+     *
+     * <p>
+     * Output: false
+     *
+     * @param p a TreeNode
+     * @param q a TreeNode
+     * @return is same tree
+     */
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        return false;
     }
 }
