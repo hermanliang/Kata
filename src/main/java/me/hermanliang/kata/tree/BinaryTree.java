@@ -14,6 +14,8 @@ import java.util.Queue;
  * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/</a>
  * @see <a href="https://leetcode.com/problems/same-tree/">
  * https://leetcode.com/problems/same-tree/</a>
+ * @see <a href="https://leetcode.com/problems/symmetric-tree/">
+ * https://leetcode.com/problems/symmetric-tree/</a>
  */
 public class BinaryTree {
 
@@ -158,6 +160,37 @@ public class BinaryTree {
         if (p.val == q.val) {
             return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
+        return false;
+    }
+
+    /**
+     * 101. Symmetric Tree [Easy]
+     * <p>
+     * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+     * <p>
+     * For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+     *
+     *     1
+     *    / \
+     *   2   2
+     *  / \ / \
+     * <p>
+     * 3  4 4  3
+     * But the following [1,2,2,null,3,null,3] is not:
+     *
+     *     1
+     *    / \
+     *   2   2
+     *    \   \
+     *    3    3
+     * <p>
+     * Note:
+     * Bonus points if you could solve it both recursively and iteratively.
+     *
+     * @param root a TreeNode
+     * @return is symmetric tree
+     */
+    public boolean isSymmetric(TreeNode root) {
         return false;
     }
 }

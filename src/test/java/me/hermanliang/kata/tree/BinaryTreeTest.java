@@ -67,4 +67,18 @@ public class BinaryTreeTest {
         boolean expected = false;
         assertEquals(expected, new BinaryTree().isSameTree(p, q));
     }
+
+    @Test
+    public void isSymmetric1() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 2, 3, 4, 4, 3});
+        boolean expected = true;
+        assertEquals(expected, new BinaryTree().isSymmetric(root));
+    }
+
+    @Test
+    public void isSymmetric2() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 2, null, 3, null, 3});
+        boolean expected = false;
+        assertEquals(expected, new BinaryTree().isSymmetric(root));
+    }
 }
