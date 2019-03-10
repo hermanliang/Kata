@@ -16,6 +16,8 @@ import java.util.Queue;
  * https://leetcode.com/problems/same-tree/</a>
  * @see <a href="https://leetcode.com/problems/symmetric-tree/">
  * https://leetcode.com/problems/symmetric-tree/</a>
+ * @see <a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/">
+ * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</a>
  */
 public class BinaryTree {
 
@@ -202,5 +204,35 @@ public class BinaryTree {
         if (left == null || right == null) return false;
         if (left.val != right.val) return false;
         return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
+    }
+
+    /**
+     * 103. Binary Tree Zigzag Level Order Traversal [Medium]
+     * <p>
+     * Given a binary tree, return the zigzag level order traversal of its nodes' values.
+     * (ie, from left to right, then right to left for the next level and alternate between).
+     * <p>
+     * For example:
+     * Given binary tree [3,9,20,null,null,15,7],
+     *
+     *     3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     * <p>
+     * return its zigzag level order traversal as:
+     * <p>
+     * [
+     *   [3],
+     *   [20,9],
+     *   [15,7]
+     * ]
+     *
+     * @param root a TreeNode
+     * @return zigzag level order traversal
+     */
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        return null;
     }
 }

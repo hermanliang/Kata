@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BinaryTreeTest {
@@ -80,5 +81,23 @@ public class BinaryTreeTest {
         TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 2, null, 3, null, 3});
         boolean expected = false;
         assertEquals(expected, new BinaryTree().isSymmetric(root));
+    }
+
+    @Test
+    public void zigzagLevelOrder() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
+        List<List<Integer>> result = new BinaryTree().zigzagLevelOrder(root);
+        assertEquals(3, result.size());
+        assertArrayEquals(new int[]{3}, listToArray(result.get(0)));
+        assertArrayEquals(new int[]{20, 9}, listToArray(result.get(1)));
+        assertArrayEquals(new int[]{15, 7}, listToArray(result.get(2)));
+    }
+
+    private int[] listToArray(List<Integer> list) {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
+        }
+        return array;
     }
 }
