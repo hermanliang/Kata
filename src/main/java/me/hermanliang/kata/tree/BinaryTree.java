@@ -2,10 +2,7 @@ package me.hermanliang.kata.tree;
 
 import me.hermanliang.kata.util.TreeNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @see <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/description/">
@@ -233,6 +230,30 @@ public class BinaryTree {
      * @return zigzag level order traversal
      */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        return null;
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        boolean fromLeft = true;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()) {
+            int size = stack.size();
+            Stack<TreeNode> temp = new Stack<>();
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = stack.pop();
+                list.add(node.val);
+                if (fromLeft) {
+                    if (node.left != null) temp.push(node.left);
+                    if (node.right != null) temp.push(node.right);
+                } else {
+                    if (node.right != null) temp.push(node.right);
+                    if (node.left != null) temp.push(node.left);
+                }
+            }
+            stack.addAll(temp);
+            result.add(list);
+            fromLeft = !fromLeft;
+        }
+        return result;
     }
 }
