@@ -5,8 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BinaryTreeTest {
 
@@ -99,5 +98,14 @@ public class BinaryTreeTest {
             array[i] = list.get(i);
         }
         return array;
+    }
+
+    @Test
+    public void buildTree() {
+        int[] preorder = {3, 9, 20, 15, 7};
+        int[] inorder = {9, 3, 15, 20, 7};
+        TreeNode expected = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
+        TreeNode result = new BinaryTree().buildTree(preorder, inorder);
+        assertTrue(new BinaryTree().isSameTree(expected, result));
     }
 }

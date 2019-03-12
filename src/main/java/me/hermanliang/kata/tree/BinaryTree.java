@@ -15,6 +15,8 @@ import java.util.*;
  * https://leetcode.com/problems/symmetric-tree/</a>
  * @see <a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/">
  * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</a>
+ * @see <a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">
+ * https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a>
  */
 public class BinaryTree {
 
@@ -235,7 +237,7 @@ public class BinaryTree {
         boolean fromLeft = true;
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             int size = stack.size();
             Stack<TreeNode> temp = new Stack<>();
             List<Integer> list = new ArrayList<>();
@@ -255,5 +257,33 @@ public class BinaryTree {
             fromLeft = !fromLeft;
         }
         return result;
+    }
+
+    /**
+     * 105. Construct Binary Tree from Preorder and Inorder [Medium]
+     * <p>
+     * Given preorder and inorder traversal of a tree, construct the binary tree.
+     * <p>
+     * Note:
+     * You may assume that duplicates do not exist in the tree.
+     * <p>
+     * For example, given
+     * <p>
+     * preorder = [3,9,20,15,7]
+     * inorder = [9,3,15,20,7]
+     * Return the following binary tree:
+     *
+     *     3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     *
+     * @param preorder preorder of a binary tree
+     * @param inorder  inorder of a binary tree
+     * @return binary tree
+     */
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return null;
     }
 }
