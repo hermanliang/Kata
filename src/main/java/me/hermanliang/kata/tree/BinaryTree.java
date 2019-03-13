@@ -284,6 +284,23 @@ public class BinaryTree {
      * @return binary tree
      */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return null;
+        return helper(preorder, inorder, 0, 0, inorder.length - 1);
+    }
+
+    private TreeNode helper(int[] preorder, int[] inorder, int preStart, int inStart, int inEnd) {
+        if (preStart >= preorder.length || inStart >= inorder.length || inEnd < inStart) {
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[preStart]);
+        int index = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inorder[i] == root.val) {
+                index = i;
+                break;
+            }
+        }
+        root.left = helper(preorder, inorder, preStart + 1, inStart, index - 1);
+        root.right = helper(preorder, inorder, preStart + index - inStart + 1, index + 1, inEnd);
+        return root;
     }
 }
