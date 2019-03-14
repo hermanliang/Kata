@@ -1,5 +1,6 @@
 package me.hermanliang.kata.tree;
 
+import me.hermanliang.kata.util.ListNode;
 import me.hermanliang.kata.util.TreeNode;
 
 import java.util.*;
@@ -17,6 +18,8 @@ import java.util.*;
  * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</a>
  * @see <a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">
  * https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a>
+ * @see <a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/">
+ * https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/</a>
  */
 public class BinaryTree {
 
@@ -302,5 +305,31 @@ public class BinaryTree {
         root.left = helper(preorder, inorder, preStart + 1, inStart, index - 1);
         root.right = helper(preorder, inorder, preStart + index - inStart + 1, index + 1, inEnd);
         return root;
+    }
+
+    /**
+     * 109. Convert Sorted List to Binary Search Tree [Medium]
+     * <p>
+     * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+     * <p>
+     * For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+     * <p>
+     * Example:
+     * <p>
+     * Given the sorted linked list: [-10,-3,0,5,9],
+     * <p>
+     * One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+     * <p>
+     *
+     *       0
+     *      / \
+     *    -3   9
+     *    /   /
+     *  -10  5
+     * @param head
+     * @return
+     */
+    public TreeNode sortedListToBST(ListNode head) {
+        return null;
     }
 }

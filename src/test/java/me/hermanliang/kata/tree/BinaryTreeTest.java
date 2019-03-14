@@ -1,5 +1,6 @@
 package me.hermanliang.kata.tree;
 
+import me.hermanliang.kata.util.ListNode;
 import me.hermanliang.kata.util.TreeNode;
 import org.junit.Test;
 
@@ -106,6 +107,14 @@ public class BinaryTreeTest {
         int[] inorder = {9, 3, 15, 20, 7};
         TreeNode expected = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
         TreeNode result = new BinaryTree().buildTree(preorder, inorder);
+        assertTrue(new BinaryTree().isSameTree(expected, result));
+    }
+
+    @Test
+    public void sortedListToBST() {
+        ListNode head = ListNode.arrayToListNode(new int[]{-10, -3, 0, 5, 9});
+        TreeNode expected = TreeNode.arrayToTreeNode(new Integer[]{0, -10, 5, null, -3, null, 9});
+        TreeNode result = new BinaryTree().sortedListToBST(head);
         assertTrue(new BinaryTree().isSameTree(expected, result));
     }
 }
