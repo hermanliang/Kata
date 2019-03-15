@@ -330,6 +330,21 @@ public class BinaryTree {
      * @return
      */
     public TreeNode sortedListToBST(ListNode head) {
-        return null;
+        if (head == null) return null;
+        ListNode pre = head;
+        ListNode mid = head;
+        ListNode next = head;
+        while (next.next != null && next.next.next != null) {
+            pre = mid;
+            mid = mid.next;
+            next = next.next.next;
+        }
+        TreeNode root = new TreeNode(mid.val);
+        if (pre != mid) {
+            pre.next = null;
+            root.left = sortedListToBST(head);
+        }
+        root.right = sortedListToBST(mid.next);
+        return root;
     }
 }
