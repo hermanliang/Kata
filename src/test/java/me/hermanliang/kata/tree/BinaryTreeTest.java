@@ -117,4 +117,16 @@ public class BinaryTreeTest {
         TreeNode result = new BinaryTree().sortedListToBST(head);
         assertTrue(new BinaryTree().isSameTree(expected, result));
     }
+
+    @Test
+    public void isBalanced1() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
+        assertTrue(new BinaryTree().isBalanced(root));
+    }
+
+    @Test
+    public void isBalanced2() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 2, 3, 3, null, null, 4, 4});
+        assertFalse(new BinaryTree().isBalanced(root));
+    }
 }

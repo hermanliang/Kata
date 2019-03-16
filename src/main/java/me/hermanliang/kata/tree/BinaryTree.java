@@ -20,6 +20,8 @@ import java.util.*;
  * https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a>
  * @see <a href="https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/">
  * https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/</a>
+ * @see <a href="https://leetcode.com/problems/balanced-binary-tree/">
+ * https://leetcode.com/problems/balanced-binary-tree/</a>
  */
 public class BinaryTree {
 
@@ -346,5 +348,45 @@ public class BinaryTree {
         }
         root.right = sortedListToBST(mid.next);
         return root;
+    }
+
+    /**
+     * 110. Balanced Binary Tree [Easy]
+     * <p>
+     * Given a binary tree, determine if it is height-balanced.
+     * <p>
+     * For this problem, a height-balanced binary tree is defined as:
+     * <p>
+     * a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+     * <p>
+     * Example 1:
+     * <p>
+     * Given the following tree [3,9,20,null,null,15,7]:
+     *
+     *     3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     * Return true.
+     * <p>
+     * Example 2:
+     * <p>
+     * Given the following tree [1,2,2,3,3,null,null,4,4]:
+     *
+     *        1
+     *       / \
+     *      2   2
+     *     / \
+     *    3   3
+     *   / \
+     *  4   4
+     * Return false.
+     *
+     * @param root a binary tree
+     * @return is balanced
+     */
+    public boolean isBalanced(TreeNode root) {
+        return false;
     }
 }
