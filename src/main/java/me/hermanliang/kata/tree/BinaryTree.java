@@ -387,6 +387,14 @@ public class BinaryTree {
      * @return is balanced
      */
     public boolean isBalanced(TreeNode root) {
-        return false;
+        if (root == null) return true;
+        if (root.left == null && root.right == null) return true;
+        int diff = Math.abs(maxDepth(root.left) - maxDepth(root.right));
+        return diff <= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    private int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 }
