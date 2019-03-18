@@ -22,6 +22,8 @@ import java.util.*;
  * https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/</a>
  * @see <a href="https://leetcode.com/problems/balanced-binary-tree/">
  * https://leetcode.com/problems/balanced-binary-tree/</a>
+ * @see <a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/">
+ * https://leetcode.com/problems/minimum-depth-of-binary-tree/</a>
  */
 public class BinaryTree {
 
@@ -396,5 +398,32 @@ public class BinaryTree {
     private int maxDepth(TreeNode root) {
         if (root == null) return 0;
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
+    /**
+     * 111. Minimum Depth of Binary Tree [Easy]
+     * <p>
+     * Given a binary tree, find its minimum depth.
+     * <p>
+     * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+     * <p>
+     * Note: A leaf is a node with no children.
+     * <p>
+     * Example:
+     * <p>
+     * Given binary tree [3,9,20,null,null,15,7],
+     *
+     *     3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     * return its minimum depth = 2.
+     *
+     * @param root a binary tree
+     * @return min depth
+     */
+    public int minDepth(TreeNode root) {
+        return 0;
     }
 }

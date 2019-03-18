@@ -129,4 +129,11 @@ public class BinaryTreeTest {
         TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 2, 3, 3, null, null, 4, 4});
         assertFalse(new BinaryTree().isBalanced(root));
     }
+
+    @Test
+    public void minDepth() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
+        int expected = 2;
+        assertEquals(expected, new BinaryTree().minDepth(root));
+    }
 }
