@@ -424,6 +424,11 @@ public class BinaryTree {
      * @return min depth
      */
     public int minDepth(TreeNode root) {
-        return 0;
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        int md = Integer.MAX_VALUE;
+        if (root.left != null) md = Math.min(md, minDepth(root.left));
+        if (root.right != null) md = Math.min(md, minDepth(root.right));
+        return md + 1;
     }
 }
