@@ -4,6 +4,7 @@ import me.hermanliang.kata.util.ListNode;
 import me.hermanliang.kata.util.TreeNode;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -135,5 +136,24 @@ public class BinaryTreeTest {
         TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{3, 9, 20, null, null, 15, 7});
         int expected = 2;
         assertEquals(expected, new BinaryTree().minDepth(root));
+    }
+
+    @Test
+    public void pathSum() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1});
+        int sum = 22;
+        List<List<Integer>> result = new BinaryTree().pathSum(root, sum);
+        List<Integer> expect1 = Arrays.asList(5, 4, 11, 2);
+        List<Integer> expect2 = Arrays.asList(5, 8, 4, 5);
+        assertEquals(2, result.size());
+        for (List<Integer> integers : result) {
+            if (integers.equals(expect1)) {
+                expect1 = null;
+            } else if (integers.equals(expect2)) {
+                expect2 = null;
+            }
+        }
+        assertNull(expect1);
+        assertNull(expect2);
     }
 }
