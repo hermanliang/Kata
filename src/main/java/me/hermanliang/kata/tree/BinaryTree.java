@@ -464,6 +464,21 @@ public class BinaryTree {
      * @return paths
      */
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        return null;
+        return pathSum(root, sum, new ArrayList<>());
+    }
+
+    private List<List<Integer>> pathSum(TreeNode root, int sum, List<Integer> list) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        list.add(root.val);
+        if (root.val == sum && root.left == null && root.right == null) {
+            result.add(list);
+        } else {
+            List<Integer> l1 = new ArrayList<>(list);
+            result.addAll(pathSum(root.left, sum - root.val, l1));
+            List<Integer> l2 = new ArrayList<>(list);
+            result.addAll(pathSum(root.right, sum - root.val, l2));
+        }
+        return result;
     }
 }
