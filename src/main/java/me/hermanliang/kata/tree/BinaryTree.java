@@ -26,6 +26,8 @@ import java.util.*;
  * https://leetcode.com/problems/minimum-depth-of-binary-tree/</a>
  * @see <a href="https://leetcode.com/problems/path-sum-ii/">
  * https://leetcode.com/problems/path-sum-ii/</a>
+ * @see <a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/">
+ * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/</a>
  */
 public class BinaryTree {
 
@@ -480,5 +482,37 @@ public class BinaryTree {
             result.addAll(pathSum(root.right, sum - root.val, l2));
         }
         return result;
+    }
+
+    /**
+     * 114. Flatten Binary Tree to Linked List [Medium]
+     * <p>
+     * Given a binary tree, flatten it to a linked list in-place.
+     * <p>
+     * For example, given the following tree:
+     *
+     *     1
+     *    / \
+     *   2   5
+     *  / \   \
+     * 3   4   6
+     * The flattened tree should look like:
+     * <p>
+     * 1
+     *  \
+     *   2
+     *    \
+     *     3
+     *      \
+     *       4
+     *        \
+     *         5
+     *          \
+     *           6
+     *
+     * @param root a binary tree
+     */
+    public void flatten(TreeNode root) {
+
     }
 }

@@ -156,4 +156,16 @@ public class BinaryTreeTest {
         assertNull(expect1);
         assertNull(expect2);
     }
+
+    @Test
+    public void flatten() {
+        TreeNode root = TreeNode.arrayToTreeNode(new Integer[]{1, 2, 5, 3, 4, null, 6});
+        new BinaryTree().flatten(root);
+        int i = 1;
+        assertNotNull(root);
+        while (root != null) {
+            assertEquals(i++, root.val);
+            root = root.right;
+        }
+    }
 }
