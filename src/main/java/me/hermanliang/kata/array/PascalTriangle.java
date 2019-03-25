@@ -1,5 +1,6 @@
 package me.hermanliang.kata.array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,18 @@ public class PascalTriangle {
      * @return a Pascal's Triangle
      */
     public List<List<Integer>> generate(int numRows) {
-        return null;
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> item = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) item.add(1);
+                else {
+                    List<Integer> prev = result.get(i - 1);
+                    item.add(prev.get(j - 1) + prev.get(j));
+                }
+            }
+            result.add(item);
+        }
+        return result;
     }
 }
