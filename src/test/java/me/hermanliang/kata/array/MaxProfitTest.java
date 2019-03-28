@@ -43,4 +43,25 @@ public class MaxProfitTest {
         int expected = 0;
         assertEquals(expected, new MaxProfit().maxProfitWithMultipleTransactions(prices));
     }
+
+    @Test
+    public void maxProfitWithTwoTransactions1() {
+        int[] prices = {3, 3, 5, 0, 0, 3, 1, 4};
+        int expected = 6;
+        assertEquals(expected, new MaxProfit().maxProfitWithTwoTransactions(prices));
+    }
+
+    @Test
+    public void maxProfitWithTwoTransactions2() {
+        int[] prices = {1, 2, 3, 4, 5};
+        int expected = 4;
+        assertEquals(expected, new MaxProfit().maxProfitWithTwoTransactions(prices));
+    }
+
+    @Test
+    public void maxProfitWithTwoTransactions3() {
+        int[] prices = {7, 6, 4, 3, 1};
+        int expected = 0;
+        assertEquals(expected, new MaxProfit().maxProfitWithTwoTransactions(prices));
+    }
 }
