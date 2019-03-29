@@ -122,6 +122,30 @@ public class MaxProfit {
      * @return max profit with two transactions
      */
     public int maxProfitWithTwoTransactions(int[] prices) {
-        return 0;
+        int max = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+            int price = prices[i];
+            if (price < minPrice) {
+                minPrice = price;
+            } else {
+                max = Math.max(max, price - minPrice + maxProfit(prices, i + 1));
+            }
+        }
+        return max;
+    }
+
+    private int maxProfit(int[] prices, int start) {
+        int max = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for (int i = start; i < prices.length; i++) {
+            int price = prices[i];
+            if (price < minPrice) {
+                minPrice = price;
+            } else {
+                max = Math.max(max, price - minPrice);
+            }
+        }
+        return max;
     }
 }
