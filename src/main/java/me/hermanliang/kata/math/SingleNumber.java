@@ -28,6 +28,10 @@ public class SingleNumber {
      * @return the single number
      */
     public int singleNumber(int[] nums) {
-        return 0;
+        int result = 0;
+        for (int n : nums) {
+            result ^= n;
+        }
+        return result;
     }
 }
