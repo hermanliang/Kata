@@ -2,6 +2,10 @@ package me.hermanliang.kata.array;
 
 import me.hermanliang.kata.util.Interval;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * @see <a href="https://leetcode.com/problems/meeting-rooms-ii/">
  * https://leetcode.com/problems/meeting-rooms-ii/</a>
@@ -27,6 +31,20 @@ public class MeetingRoom {
      * @return minimum rooms
      */
     public int minMeetingRooms(Interval[] intervals) {
-        return 0;
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            public int compare(Interval i1, Interval i2) {
+                return i1.start - i2.start;
+            }
+        });
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        int minEndTime = 0;
+        for (Interval interval : intervals) {
+            if (!queue.isEmpty() && interval.start >= minEndTime) {
+                queue.poll();
+            }
+            queue.offer(interval.end);
+            minEndTime = queue.peek();
+        }
+        return queue.size();
     }
 }
