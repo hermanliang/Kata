@@ -3,6 +3,8 @@ package me.hermanliang.kata.string;
 /**
  * @see <a href="https://leetcode.com/problems/valid-palindrome/description/">
  * https://leetcode.com/problems/valid-palindrome/description/</a>
+ * @see <a href="https://leetcode.com/problems/valid-palindrome-ii/">
+ * https://leetcode.com/problems/valid-palindrome-ii/</a>
  */
 public class ValidPalindrome {
 
@@ -48,5 +50,30 @@ public class ValidPalindrome {
             if (s.charAt(start++) != s.charAt(end--)) return false;
         }
         return true;
+    }
+
+    /**
+     * 680. Valid Palindrome II [Easy]
+     * <p>
+     * Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: "aba"
+     * Output: True
+     * Example 2:
+     * <p>
+     * Input: "abca"
+     * Output: True
+     * Explanation: You could delete the character 'c'.
+     * Note:
+     * <p>
+     * The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+     *
+     * @param s a string
+     * @return is valid palindrome
+     */
+    public boolean validPalindrome(String s) {
+        return false;
     }
 }
