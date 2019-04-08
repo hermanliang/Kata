@@ -74,6 +74,23 @@ public class ValidPalindrome {
      * @return is valid palindrome
      */
     public boolean validPalindrome(String s) {
-        return false;
+        int start = 0;
+        int end = s.length() - 1;
+        return validPalindrom(s, start, end, true);
+    }
+
+    private boolean validPalindrom(String s, int start, int end, boolean canRemove) {
+        while (end > start) {
+            if (s.charAt(start) != s.charAt(end)) {
+                if (canRemove) {
+                    return validPalindrom(s, start, end - 1, false) ||
+                            validPalindrom(s, start + 1, end, false);
+                }
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 }
