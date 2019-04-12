@@ -67,6 +67,19 @@ public class SubarraySum {
      * @return result
      */
     public boolean checkSubarraySum(int[] nums, int k) {
+        if (k == 0) {
+            for (int n : nums) {
+                if (k != n) return false;
+            }
+            return nums.length > 1;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int sum = nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                sum += nums[j];
+                if (sum % k == 0) return true;
+            }
+        }
         return false;
     }
 }
