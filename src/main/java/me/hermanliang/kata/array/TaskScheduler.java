@@ -1,5 +1,7 @@
 package me.hermanliang.kata.array;
 
+import java.util.Arrays;
+
 /**
  * @see <a href="https://leetcode.com/problems/task-scheduler/">
  * https://leetcode.com/problems/task-scheduler/</a>
@@ -31,6 +33,21 @@ public class TaskScheduler {
      * @return least number of intervals
      */
     public int leastInterval(char[] tasks, int n) {
-        return 0;
+        int interval = 0;
+        int[] jobs = new int[26];
+        for (char c : tasks) {
+            jobs[c - 'A']++;
+        }
+        Arrays.sort(jobs);
+        while (jobs[25] > 0) {
+            for (int i = 0; i <= n; i++) {
+                if (jobs[25] == 0) break;
+                if (i < 26 && jobs[25 - i] != 0)
+                    jobs[25 - i]--;
+                interval++;
+            }
+            Arrays.sort(jobs);
+        }
+        return interval;
     }
 }
