@@ -6,35 +6,30 @@ package me.hermanliang.kata.array;
  */
 public class MissingNumber {
 
-    /**
-     * 268. Missing Number [Easy]
-     * <p>
-     * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
-     * find the one that is missing from the array.
-     * <p>
-     * Example 1:
-     * <p>
-     * Input: [3,0,1]
-     * Output: 2
-     * Example 2:
-     * <p>
-     * Input: [9,6,4,2,3,5,7,0,1]
-     * Output: 8
-     * Note:
-     * Your algorithm should run in linear runtime complexity.
-     * Could you implement it using only constant extra space complexity?
-     *
-     * @param nums an integer array
-     * @return the missing number
-     */
-    public int missingNumber(int[] nums) {
-        boolean[] visited = new boolean[nums.length + 1];
-        for (int i = 0; i < nums.length; i++) {
-            visited[nums[i]] = true;
-        }
-        for (int i = 0; i < visited.length; i++) {
-            if (!visited[i]) return i;
-        }
-        return -1;
+  /**
+   * 268. Missing Number [Easy]
+   * <p>
+   * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is
+   * missing from the array.
+   * <p>
+   * Example 1:
+   * <p>
+   * Input: [3,0,1] Output: 2 Example 2:
+   * <p>
+   * Input: [9,6,4,2,3,5,7,0,1] Output: 8 Note: Your algorithm should run in linear runtime
+   * complexity. Could you implement it using only constant extra space complexity?
+   *
+   * @param nums an integer array
+   * @return the missing number
+   */
+  public int missingNumber(int[] nums) {
+    boolean[] visited = new boolean[nums.length + 1];
+    for (int i = 0; i < nums.length; i++) {
+      visited[nums[i]] = true;
     }
+    for (int i = 0; i < visited.length; i++) {
+      if (!visited[i]) return i;
+    }
+    return -1;
+  }
 }

@@ -10,78 +10,75 @@ import me.hermanliang.kata.util.ListNode;
  */
 public class ReverseList {
 
-    /**
-     * 206. Reverse Linked List [Easy]
-     * <p>
-     * Reverse a singly linked list.
-     * <p>
-     * Example:
-     * <p>
-     * Input: 1->2->3->4->5->NULL
-     * Output: 5->4->3->2->1->NULL
-     * Follow up:
-     * <p>
-     * A linked list can be reversed either iteratively or recursively. Could you implement both?
-     *
-     * @param head a ListNode
-     * @return reversed ListNode
-     */
-    public ListNode reverseList(ListNode head) {
-        if (head == null) return null;
-        ListNode next = head.next;
-        head.next = null;
-        while (next != null) {
-            ListNode tmp = next.next;
-            next.next = head;
-            head = next;
-            next = tmp;
-        }
-        return head;
+  /**
+   * 206. Reverse Linked List [Easy]
+   * <p>
+   * Reverse a singly linked list.
+   * <p>
+   * Example:
+   * <p>
+   * Input: 1->2->3->4->5->NULL Output: 5->4->3->2->1->NULL Follow up:
+   * <p>
+   * A linked list can be reversed either iteratively or recursively. Could you implement both?
+   *
+   * @param head a ListNode
+   * @return reversed ListNode
+   */
+  public ListNode reverseList(ListNode head) {
+    if (head == null) return null;
+    ListNode next = head.next;
+    head.next = null;
+    while (next != null) {
+      ListNode tmp = next.next;
+      next.next = head;
+      head = next;
+      next = tmp;
     }
+    return head;
+  }
 
-    /**
-     * 92. Reverse Linked List II [Medium]
-     * <p>
-     * Reverse a linked list from position m to n. Do it in one-pass.
-     * <p>
-     * Note: 1 ≤ m ≤ n ≤ length of list.
-     * <p>
-     * Example:
-     * <p>
-     * Input: 1->2->3->4->5->NULL, m = 2, n = 4
-     * Output: 1->4->3->2->5->NULL
-     *
-     * @param head a ListNode
-     * @param m    m
-     * @param n    n
-     * @return reverse ListNode from position m to n
-     */
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        int steps = n - m;
-        ListNode cursor = dummy;
-        while (m-- > 1) {
-            cursor = cursor.next;
-        }
-        ListNode preEnd = cursor;
-        cursor = cursor.next;
-        cursor = reversePartial(cursor, steps);
-        preEnd.next = cursor;
-        return dummy.next;
+  /**
+   * 92. Reverse Linked List II [Medium]
+   * <p>
+   * Reverse a linked list from position m to n. Do it in one-pass.
+   * <p>
+   * Note: 1 ≤ m ≤ n ≤ length of list.
+   * <p>
+   * Example:
+   * <p>
+   * Input: 1->2->3->4->5->NULL, m = 2, n = 4 Output: 1->4->3->2->5->NULL
+   *
+   * @param head a ListNode
+   * @param m m
+   * @param n n
+   * @return reverse ListNode from position m to n
+   */
+  public ListNode reverseBetween(ListNode head, int m, int n) {
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    int steps = n - m;
+    ListNode cursor = dummy;
+    while (m-- > 1) {
+      cursor = cursor.next;
     }
+    ListNode preEnd = cursor;
+    cursor = cursor.next;
+    cursor = reversePartial(cursor, steps);
+    preEnd.next = cursor;
+    return dummy.next;
+  }
 
-    private ListNode reversePartial(ListNode head, int steps) {
-        ListNode next = head.next;
-        ListNode midEnd = head;
-        head.next = null;
-        while (steps-- > 0) {
-            ListNode tmp = next.next;
-            next.next = head;
-            head = next;
-            next = tmp;
-        }
-        midEnd.next = next;
-        return head;
+  private ListNode reversePartial(ListNode head, int steps) {
+    ListNode next = head.next;
+    ListNode midEnd = head;
+    head.next = null;
+    while (steps-- > 0) {
+      ListNode tmp = next.next;
+      next.next = head;
+      head = next;
+      next = tmp;
     }
+    midEnd.next = next;
+    return head;
+  }
 }

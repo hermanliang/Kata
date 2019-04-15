@@ -8,41 +8,39 @@ import me.hermanliang.kata.util.ListNode;
  */
 public class AddTwoNumbers {
 
-    /**
-     * 2. Add Two Numbers [Medium]
-     * <p>
-     * You are given two non-empty linked lists representing two
-     * non-negative integers. The digits are stored in reverse order
-     * and each of their nodes contain a single digit. Add the two
-     * numbers and return it as a linked list.
-     * You may assume the two numbers do not contain any leading zero,
-     * except the number 0 itself.
-     *
-     * @param l1 1st number as a linked list
-     * @param l2 2nd number as a linked list
-     * @return sum of two numbers as a linked list
-     */
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int tens = 0;
-        ListNode result = new ListNode(0);
-        ListNode cursor = result;
-        while (l1 != null || l2 != null || tens > 0) {
-            int sum = tens;
-            if (l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
-            }
-            tens = sum / 10;
-            cursor.val = sum % 10;
-            if (l1 != null || l2 != null || tens > 0) {
-                cursor.next = new ListNode(0);
-                cursor = cursor.next;
-            }
-        }
-        return result;
+  /**
+   * 2. Add Two Numbers [Medium]
+   * <p>
+   * You are given two non-empty linked lists representing two non-negative integers. The digits are
+   * stored in reverse order and each of their nodes contain a single digit. Add the two numbers and
+   * return it as a linked list. You may assume the two numbers do not contain any leading zero,
+   * except the number 0 itself.
+   *
+   * @param l1 1st number as a linked list
+   * @param l2 2nd number as a linked list
+   * @return sum of two numbers as a linked list
+   */
+  public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    int tens = 0;
+    ListNode result = new ListNode(0);
+    ListNode cursor = result;
+    while (l1 != null || l2 != null || tens > 0) {
+      int sum = tens;
+      if (l1 != null) {
+        sum += l1.val;
+        l1 = l1.next;
+      }
+      if (l2 != null) {
+        sum += l2.val;
+        l2 = l2.next;
+      }
+      tens = sum / 10;
+      cursor.val = sum % 10;
+      if (l1 != null || l2 != null || tens > 0) {
+        cursor.next = new ListNode(0);
+        cursor = cursor.next;
+      }
     }
+    return result;
+  }
 }

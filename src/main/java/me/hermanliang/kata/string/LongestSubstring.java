@@ -11,68 +11,69 @@ import java.util.Set;
  */
 public class LongestSubstring {
 
-    /**
-     * 3. Longest Substring Without Repeating Characters [Medium]
-     * <p>
-     * Given a string, find the length of the longest substring without repeating characters.
-     *
-     * @param input input string
-     * @return length of the longest substring without repeating characters
-     */
-    public int lengthOfLongestSubstring(String input) {
-        int ans = 0;
-        int i = 0;
-        int j = 0;
-        int len = input.length();
-        Set<Character> holder = new HashSet<>();
-        while (i < len && j < len && ans < (len - i)) {
-            if (!holder.contains(input.charAt(j))) {
-                holder.add(input.charAt(j++));
-                ans = Math.max(ans, j - i);
-            } else {
-                holder.remove(input.charAt(i++));
-            }
-        }
-        return ans;
+  /**
+   * 3. Longest Substring Without Repeating Characters [Medium]
+   * <p>
+   * Given a string, find the length of the longest substring without repeating characters.
+   *
+   * @param input input string
+   * @return length of the longest substring without repeating characters
+   */
+  public int lengthOfLongestSubstring(String input) {
+    int ans = 0;
+    int i = 0;
+    int j = 0;
+    int len = input.length();
+    Set<Character> holder = new HashSet<>();
+    while (i < len && j < len && ans < (len - i)) {
+      if (!holder.contains(input.charAt(j))) {
+        holder.add(input.charAt(j++));
+        ans = Math.max(ans, j - i);
+      } else {
+        holder.remove(input.charAt(i++));
+      }
     }
+    return ans;
+  }
 
-    /**
-     * 5. Longest Palindromic Substring [Medium]
-     * <p>
-     * Given a string s, find the longest palindromic substring in s.
-     * You may assume that the maximum length of s is 1000.
-     *
-     * @param input input string
-     * @return longest palindromic substring
-     */
-    public String longestPalindrome(String input) {
-        int len = input.length();
-        String ans = "";
-        int maxLen = 0;
-        for (int i = 0; i < len; i++) {
-            for (int j = i + 1; j <= len; j++) {
-                int subLen = j - i;
-                if (subLen > maxLen) {
-                    String subString = input.substring(i, j);
-                    if (isPalindrome(subString)) {
-                        if (subLen > maxLen) {
-                            maxLen = subLen;
-                            ans = subString;
-                        }
-                    }
-                }
+  /**
+   * 5. Longest Palindromic Substring [Medium]
+   * <p>
+   * Given a string s, find the longest palindromic substring in s. You may assume that the maximum
+   * length of s is 1000.
+   *
+   * @param input input string
+   * @return longest palindromic substring
+   */
+  public String longestPalindrome(String input) {
+    int len = input.length();
+    String ans = "";
+    int maxLen = 0;
+    for (int i = 0; i < len; i++) {
+      for (int j = i + 1; j <= len; j++) {
+        int subLen = j - i;
+        if (subLen > maxLen) {
+          String subString = input.substring(i, j);
+          if (isPalindrome(subString)) {
+            if (subLen > maxLen) {
+              maxLen = subLen;
+              ans = subString;
             }
+          }
         }
-        return ans;
+      }
     }
+    return ans;
+  }
 
-    private boolean isPalindrome(String s) {
-        int left = 0;
-        int right = s.length() - 1;
-        while (left <= right) {
-            if (s.charAt(left++) != s.charAt(right--))
-                return false;
-        }
-        return true;
+  private boolean isPalindrome(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+    while (left <= right) {
+      if (s.charAt(left++) != s.charAt(right--)) {
+        return false;
+      }
     }
+    return true;
+  }
 }
