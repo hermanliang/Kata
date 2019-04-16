@@ -28,6 +28,14 @@ public class PermutationsTest {
     verifyPermutations(nums, output);
   }
 
+  @Test
+  public void nextPermutation() {
+    int[] nums = {1, 2, 3};
+    int[] expected = {1, 3, 2};
+    new Permutations().nextPermutation(nums);
+    assertArrayEquals(expected, nums);
+  }
+
   private void verifyPermutations(int[] nums, List<List<Integer>> output) {
     Set<String> visited = new HashSet<>();
     for (List<Integer> integers : output) {
