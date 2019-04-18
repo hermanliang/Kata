@@ -173,4 +173,21 @@ public class BinaryTreeTest {
       root = root.right;
     }
   }
+
+  @Test
+  public void treeToDoublyList() {
+    TreeNode root = TreeNode.arrayToTreeNode(new Integer[] {4, 2, 5, 1, 3});
+    int[] expected = {1, 2, 3, 4, 5};
+    int index = 0;
+    TreeNode node = new BinaryTree().treeToDoublyList(root);
+    TreeNode head = node;
+    TreeNode next = node.right;
+    while (next != node) {
+      assertEquals(expected[index++], head.val);
+      assertEquals(head, next.left);
+      head = next;
+      next = head.right;
+    }
+    assertEquals(head, next.left);
+  }
 }
