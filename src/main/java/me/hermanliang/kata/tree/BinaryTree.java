@@ -470,6 +470,30 @@ public class BinaryTree {
    * @return a doubly linked list
    */
   public TreeNode treeToDoublyList(TreeNode root) {
-    return null;
+    if (root == null) return null;
+    TreeNode head = null;
+    TreeNode next = null;
+    Stack<TreeNode> stack = new Stack<>();
+    while (root != null || !stack.isEmpty()) {
+      while (root != null) {
+        stack.push(root);
+        root = root.left;
+      }
+      root = stack.pop();
+      if (head == null) {
+        head = new TreeNode(root.val);
+        head.val = root.val;
+        next = head;
+      } else {
+        next.right = new TreeNode(root.val);
+        next.right.left = next;
+        next = next.right;
+        next.val = root.val;
+      }
+      root = root.right;
+    }
+    head.left = next;
+    next.right = head;
+    return head;
   }
 }
