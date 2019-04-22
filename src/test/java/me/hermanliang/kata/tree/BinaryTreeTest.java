@@ -1,6 +1,7 @@
 package me.hermanliang.kata.tree;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import me.hermanliang.kata.util.ListNode;
 import me.hermanliang.kata.util.TreeNode;
@@ -189,5 +190,44 @@ public class BinaryTreeTest {
       next = head.right;
     }
     assertEquals(head, next.left);
+  }
+
+  @Test
+  public void verticalOrder1() {
+    TreeNode root = TreeNode.arrayToTreeNode(new Integer[] {3, 9, 20, null, null, 15, 7});
+    List<List<Integer>> expected = Arrays.asList(
+        Collections.singletonList(9),
+        Arrays.asList(3, 15),
+        Collections.singletonList(20),
+        Collections.singletonList(7)
+    );
+    assertEquals(expected, new BinaryTree().verticalOrder(root));
+  }
+
+  @Test
+  public void verticalOrder2() {
+    TreeNode root = TreeNode.arrayToTreeNode(new Integer[] {3, 9, 8, 4, 0, 1, 7});
+    List<List<Integer>> expected = Arrays.asList(
+        Collections.singletonList(4),
+        Collections.singletonList(9),
+        Arrays.asList(3, 0, 1),
+        Collections.singletonList(8),
+        Collections.singletonList(7)
+    );
+    assertEquals(expected, new BinaryTree().verticalOrder(root));
+  }
+
+  @Test
+  public void verticalOrder3() {
+    TreeNode root =
+        TreeNode.arrayToTreeNode(new Integer[] {3, 9, 8, 4, 0, 1, 7, null, null, null, 2, 5});
+    List<List<Integer>> expected = Arrays.asList(
+        Collections.singletonList(4),
+        Arrays.asList(9, 5),
+        Arrays.asList(3, 0, 1),
+        Arrays.asList(8, 2),
+        Collections.singletonList(7)
+    );
+    assertEquals(expected, new BinaryTree().verticalOrder(root));
   }
 }
