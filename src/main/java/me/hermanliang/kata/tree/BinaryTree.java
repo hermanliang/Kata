@@ -1,8 +1,10 @@
 package me.hermanliang.kata.tree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 import me.hermanliang.kata.util.ListNode;
@@ -614,6 +616,45 @@ public class BinaryTree {
    * ]
    */
   public List<List<Integer>> verticalOrder(TreeNode root) {
-    return null;
+    List<List<Integer>> result = new ArrayList<>();
+    if (root == null) return result;
+    Queue<TreeNode> queue = new LinkedList<>();
+    Queue<Integer> levels = new LinkedList<>();
+    Map<Integer, List<Integer>> map = new HashMap<>();
+    queue.offer(root);
+    levels.offer(0);
+    int minLev = Integer.MAX_VALUE;
+    int maxLev = Integer.MIN_VALUE;
+    while (!queue.isEmpty()) {
+      int size = queue.size();
+      for (int i = 0; i < size; i++) {
+        TreeNode node = queue.poll();
+        int level = levels.poll();
+        minLev = Math.min(minLev, level);
+        maxLev = Math.max(maxLev, level);
+        process(node, level, map);
+        if (node.left != null) {
+          queue.offer(node.left);
+          levels.offer(level - 1);
+
+        }
+        if (node.right != null) {
+          queue.offer(node.right);
+          levels.offer(level + 1);
+        }
+      }
+    }
+    for (int i = minLev; i <= maxLev; i++) {
+      result.add(map.get(i));
+    }
+    return result;
+  }
+
+  private void process(TreeNode root, int level, Map<Integer, List<Integer>> map) {
+    if (root == null) return;
+    if (!map.containsKey(level)) {
+      map.put(level, new ArrayList<>());
+    }
+    map.get(level).add(root.val);
   }
 }
