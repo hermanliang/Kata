@@ -46,6 +46,16 @@ public class VersionControl {
    * @return bad version
    */
   public int firstBadVersion(int n) {
-    return 0;
+    int start = 1;
+    int end = n;
+    while (end > start) {
+      int mid = start + (end - start) / 2;
+      if (!isBadVersion(mid)) {
+        start = mid + 1;
+      } else {
+        end = mid;
+      }
+    }
+    return start;
   }
 }
