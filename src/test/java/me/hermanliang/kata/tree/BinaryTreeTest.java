@@ -230,4 +230,11 @@ public class BinaryTreeTest {
     );
     assertEquals(expected, new BinaryTree().verticalOrder(root));
   }
+
+  @Test
+  public void diameterOfBinaryTree() {
+    TreeNode root = TreeNode.arrayToTreeNode(new Integer[] {1, 2, 3, 4, 5});
+    int expected = 3;
+    assertEquals(expected, new BinaryTree().diameterOfBinaryTree(root));
+  }
 }

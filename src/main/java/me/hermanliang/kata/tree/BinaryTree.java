@@ -35,6 +35,8 @@ import me.hermanliang.kata.util.TreeNode;
  * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/</a>
  * @see <a href="https://leetcode.com/problems/binary-tree-vertical-order-traversal/">
  * https://leetcode.com/problems/binary-tree-vertical-order-traversal/</a>
+ * @see <a href="https://leetcode.com/problems/diameter-of-binary-tree/">
+ * https://leetcode.com/problems/diameter-of-binary-tree/</a>
  */
 public class BinaryTree {
 
@@ -636,7 +638,6 @@ public class BinaryTree {
         if (node.left != null) {
           queue.offer(node.left);
           levels.offer(level - 1);
-
         }
         if (node.right != null) {
           queue.offer(node.right);
@@ -656,5 +657,35 @@ public class BinaryTree {
       map.put(level, new ArrayList<>());
     }
     map.get(level).add(root.val);
+  }
+
+  /**
+   * 543. Diameter of Binary Tree [Easy]
+   *
+   * Given a binary tree, you need to compute the length of the diameter of the tree. The diameter
+   * of a binary tree is the length of the longest path between any two nodes in a tree. This path
+   * may or may not pass through the root.
+   *
+   * Example: Given a binary tree
+   *
+   * 1
+   *
+   * / \
+   *
+   * 2   3
+   *
+   * / \
+   *
+   * 4   5
+   *
+   * Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+   *
+   * Note: The length of path between two nodes is represented by the number of edges between them.
+   *
+   * @param root a TreeNode
+   * @return diameter of the TreeNode
+   */
+  public int diameterOfBinaryTree(TreeNode root) {
+    return 0;
   }
 }
