@@ -40,6 +40,12 @@ import me.hermanliang.kata.util.TreeNode;
  */
 public class BinaryTree {
 
+  private Map<TreeNode, Integer> diameterCache;
+
+  public BinaryTree() {
+    diameterCache = new HashMap<>();
+  }
+
   /**
    * 102. Binary Tree Level Order Traversal [Medium]
    * <p>
@@ -686,6 +692,20 @@ public class BinaryTree {
    * @return diameter of the TreeNode
    */
   public int diameterOfBinaryTree(TreeNode root) {
-    return 0;
+    if (root == null) return 0;
+    int d1 = depth(root.left) + depth(root.right);
+    int d2 = diameterOfBinaryTree(root.left);
+    int d3 = diameterOfBinaryTree(root.right);
+    return Math.max(d1, Math.max(d2, d3));
+  }
+
+  private int depth(TreeNode root) {
+    if (root == null) return 0;
+    if (diameterCache.containsKey(root)) {
+      return diameterCache.get(root);
+    }
+    int depth = 1 + Math.max(depth(root.left), depth(root.right));
+    diameterCache.put(root, depth);
+    return diameterCache.get(root);
   }
 }
