@@ -1,6 +1,9 @@
 package me.hermanliang.kata.hash;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @see <a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">
@@ -53,6 +56,38 @@ public class FindAnagrams {
    * @return start indices of p's anagrams in s
    */
   public List<Integer> findAnagrams(String s, String p) {
-    return null;
+    List<Integer> list = new ArrayList<>();
+    if (p.isEmpty()) return list;
+    if (p.length() > s.length()) return list;
+    Map<Character, Integer> map = getFeature(p);
+    int count = 0;
+    int left = 0;
+    for (int right = 0; right < s.length(); right++) {
+      char c = s.charAt(right);
+      if (map.containsKey(c)) {
+        if (map.get(c) > 0) count++;
+        map.put(c, map.get(c) - 1);
+      }
+      while (count == p.length()) {
+        if (right - left + 1 == p.length()) {
+          list.add(left);
+        }
+        char l = s.charAt(left);
+        if (map.containsKey(l)) {
+          map.put(l, map.get(l) + 1);
+          if (map.get(l) > 0) count--;
+        }
+        left++;
+      }
+    }
+    return list;
+  }
+
+  private Map<Character, Integer> getFeature(String s) {
+    Map<Character, Integer> map = new HashMap<>();
+    for (char c : s.toCharArray()) {
+      map.put(c, map.getOrDefault(c, 0) + 1);
+    }
+    return map;
   }
 }
