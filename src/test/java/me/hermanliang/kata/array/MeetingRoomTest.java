@@ -27,4 +27,25 @@ public class MeetingRoomTest {
     int expected = 1;
     assertEquals(expected, new MeetingRoom().minMeetingRooms(intervals));
   }
+
+  @Test
+  public void canAttendMeetings1() {
+    Interval[] intervals = {
+        new Interval(0, 30),
+        new Interval(5, 10),
+        new Interval(15, 20)
+    };
+    boolean expected = false;
+    assertEquals(expected, new MeetingRoom().canAttendMeetings(intervals));
+  }
+
+  @Test
+  public void canAttendMeetings2() {
+    Interval[] intervals = {
+        new Interval(7, 10),
+        new Interval(2, 4)
+    };
+    boolean expected = true;
+    assertEquals(expected, new MeetingRoom().canAttendMeetings(intervals));
+  }
 }

@@ -6,10 +6,40 @@ import java.util.PriorityQueue;
 import me.hermanliang.kata.util.Interval;
 
 /**
+ * @see <a href="https://leetcode.com/problems/meeting-rooms/">
+ * https://leetcode.com/problems/meeting-rooms/</a>
  * @see <a href="https://leetcode.com/problems/meeting-rooms-ii/">
  * https://leetcode.com/problems/meeting-rooms-ii/</a>
  */
 public class MeetingRoom {
+
+  /**
+   * 252. Meeting Rooms [Easy]
+   *
+   * Given an array of meeting time intervals consisting of start and end times
+   * [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+   *
+   * Example 1:
+   *
+   * Input: [[0,30],[5,10],[15,20]]
+   *
+   * Output: false
+   *
+   * Example 2:
+   *
+   * Input: [[7,10],[2,4]]
+   *
+   * Output: true
+   *
+   * NOTE: input types have been changed on April 15, 2019. Please reset to default code definition
+   * to get new method signature.
+   *
+   * @param intervals time intervals
+   * @return could attend all meetings
+   */
+  public boolean canAttendMeetings(Interval[] intervals) {
+    return false;
+  }
 
   /**
    * 253. Meeting Rooms II [Medium]
