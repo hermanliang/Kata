@@ -1,5 +1,8 @@
 package me.hermanliang.kata.array;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * @see <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">
  * https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/</a>
@@ -36,6 +39,22 @@ public class MinArrowShots {
    * @return minimum arrow shots
    */
   public int findMinArrowShots(int[][] points) {
-    return 0;
+    if (points.length <= 1) return points.length;
+    Arrays.sort(points, new Comparator<int[]>() {
+      public int compare(int[] a, int[] b) {
+        return a[0] - b[0];
+      }
+    });
+    int end = points[0][1];
+    int count = 1;
+    for (int i = 1; i < points.length; i++) {
+      if (points[i][0] <= end) {
+        end = Math.min(end, points[i][1]);
+      } else {
+        end = points[i][1];
+        count++;
+      }
+    }
+    return count;
   }
 }
