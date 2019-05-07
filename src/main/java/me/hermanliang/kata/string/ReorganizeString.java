@@ -1,5 +1,7 @@
 package me.hermanliang.kata.string;
 
+import java.util.Arrays;
+
 /**
  * @see <a href="https://leetcode.com/problems/reorganize-string/">
  * https://leetcode.com/problems/reorganize-string/</a>
@@ -34,6 +36,23 @@ public class ReorganizeString {
    * @return reorganized string
    */
   public String reorganizeString(String S) {
-    return null;
+    char[] array = new char[26];
+    for (char c : S.toCharArray()) {
+      array[c - 'a'] += 100;
+    }
+    for (int i = 0; i < 26; i++) array[i] += i;
+    Arrays.sort(array);
+    StringBuilder sb = new StringBuilder();
+    while (array[25] / 100 > 0) {
+      if (array[25] / 100 > 1 && array[24] / 100 == 0) return "";
+      int i = 0;
+      while (i < 2 && array[25 - i] / 100 > 0) {
+        sb.append((char) (array[25 - i] % 100 + 'a'));
+        array[25 - i] -= 100;
+        i++;
+      }
+      Arrays.sort(array);
+    }
+    return sb.toString();
   }
 }
