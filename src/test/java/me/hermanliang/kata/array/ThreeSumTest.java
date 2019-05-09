@@ -35,4 +35,12 @@ public class ThreeSumTest {
     int expected = 2;
     assertEquals(expected, new ThreeSum().threeSumClosest(numbers, target));
   }
+
+  @Test
+  public void threeSumSmaller() {
+    int[] nums = {-2, 0, 1, 3};
+    int target = 2;
+    int expected = 2;
+    assertEquals(expected, new ThreeSum().threeSumSmaller(nums, target));
+  }
 }
