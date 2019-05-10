@@ -129,6 +129,31 @@ public class ThreeSum {
    * @return output
    */
   public int threeSumSmaller(int[] nums, int target) {
-    return 0;
+    Arrays.sort(nums);
+    int count = 0;
+    for (int i = 0; i < nums.length - 2; i++) {
+      count += twoSumSmaller(nums, target - nums[i], i + 1);
+    }
+    return count;
+  }
+
+  private int twoSumSmaller(int[] nums, int target, int start) {
+    int count = 0;
+    for (int i = start; i < nums.length - 1; i++) {
+      count += countSmaller(nums, target - nums[i], i + 1);
+    }
+    return count;
+  }
+
+  private int countSmaller(int[] nums, int target, int start) {
+    int count = 0;
+    for (int i = start; i < nums.length; i++) {
+      if (nums[i] < target) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
   }
 }
