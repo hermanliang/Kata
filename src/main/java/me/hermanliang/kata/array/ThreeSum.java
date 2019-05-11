@@ -139,19 +139,14 @@ public class ThreeSum {
 
   private int twoSumSmaller(int[] nums, int target, int start) {
     int count = 0;
-    for (int i = start; i < nums.length - 1; i++) {
-      count += countSmaller(nums, target - nums[i], i + 1);
-    }
-    return count;
-  }
-
-  private int countSmaller(int[] nums, int target, int start) {
-    int count = 0;
-    for (int i = start; i < nums.length; i++) {
-      if (nums[i] < target) {
-        count++;
+    int left = start;
+    int right = nums.length - 1;
+    while (left < right) {
+      if (nums[left] + nums[right] < target) {
+        count += right - left;
+        left++;
       } else {
-        break;
+        right--;
       }
     }
     return count;
