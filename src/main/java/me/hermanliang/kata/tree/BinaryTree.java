@@ -62,28 +62,26 @@ public class BinaryTree {
    * @return level order traversal of the TreeNode
    */
   public List<List<Integer>> levelOrder(TreeNode root) {
-    List<List<Integer>> output = new ArrayList<>();
+    List<List<Integer>> result = new ArrayList<>();
+    if (root == null) return result;
     Queue<TreeNode> queue = new LinkedList<>();
-    Queue<TreeNode> next = new LinkedList<>();
-    List<Integer> list = new ArrayList<>();
-    queue.add(root);
+    queue.offer(root);
     while (!queue.isEmpty()) {
-      TreeNode node = queue.poll();
-      if (node != null) {
+      List<Integer> list = new ArrayList<>();
+      int size = queue.size();
+      for (int i = 0; i < size; i++) {
+        TreeNode node = queue.poll();
         list.add(node.val);
-        next.add(node.left);
-        next.add(node.right);
-      }
-      if (queue.isEmpty()) {
-        if (!list.isEmpty()) {
-          output.add(list);
-          list = new ArrayList<>();
+        if (node.left != null) {
+          queue.offer(node.left);
         }
-        queue = next;
-        next = new LinkedList<>();
+        if (node.right != null) {
+          queue.offer(node.right);
+        }
       }
+      result.add(list);
     }
-    return output;
+    return result;
   }
 
   /**
