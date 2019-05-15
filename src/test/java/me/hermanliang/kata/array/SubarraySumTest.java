@@ -31,4 +31,12 @@ public class SubarraySumTest {
     // Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.
     assertEquals(expected, new SubarraySum().checkSubarraySum(nums, k));
   }
+
+  @Test
+  public void minSubArrayLen() {
+    int s = 7;
+    int[] nums = {2, 3, 1, 2, 4, 3};
+    int expected = 2;
+    assertEquals(expected, new SubarraySum().minSubArrayLen(s, nums));
+  }
 }
