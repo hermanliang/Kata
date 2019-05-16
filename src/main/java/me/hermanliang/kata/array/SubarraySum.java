@@ -106,6 +106,16 @@ public class SubarraySum {
    * @return min. sub-array length
    */
   public int minSubArrayLen(int s, int[] nums) {
-    return 0;
+    int len = Integer.MAX_VALUE;
+    int sum = 0;
+    int left = 0;
+    for (int i = 0; i < nums.length; i++) {
+      sum += nums[i];
+      while (sum >= s) {
+        len = Math.min(len, i - left + 1);
+        sum -= nums[left++];
+      }
+    }
+    return len == Integer.MAX_VALUE ? 0 : len;
   }
 }
