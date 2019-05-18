@@ -42,6 +42,7 @@ import me.hermanliang.kata.util.TreeNode;
  */
 public class BinaryTree {
 
+  private TreeNode prev = null;
   private Map<TreeNode, Integer> diameterCache;
 
   public BinaryTree() {
@@ -755,6 +756,12 @@ public class BinaryTree {
    * @return is valid binary true
    */
   public boolean isValidBST(TreeNode root) {
-    return false;
+    if (root == null) return true;
+    if (!isValidBST(root.left)) return false;
+    if (prev != null && root.val <= prev.val) {
+      return false;
+    }
+    prev = root;
+    return isValidBST(root.right);
   }
 }
