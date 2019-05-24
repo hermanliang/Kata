@@ -113,6 +113,33 @@ public class CombinationSum {
    * @return output
    */
   public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-    return null;
+    int n = candidates.length;
+    Arrays.sort(candidates);
+    boolean[] used = new boolean[n];
+    return combinationSum2(candidates, target, 0, used, new ArrayList<>());
+  }
+
+  private List<List<Integer>> combinationSum2(int[] candidates, int target, int start,
+      boolean[] used, List<Integer> holder) {
+    List<List<Integer>> result = new ArrayList<>();
+    if (start == candidates.length) return result;
+    if (candidates[start] > target) return result;
+    if (start > 0 && candidates[start - 1] == candidates[start] && !used[start - 1]) {
+      // not use
+      result.addAll(combinationSum2(candidates, target, start + 1, used, new ArrayList<>(holder)));
+    } else if (candidates[start] == target) {
+      holder.add(candidates[start]);
+      result.add(holder);
+    } else {
+      // not use
+      result.addAll(combinationSum2(candidates, target, start + 1, used, new ArrayList<>(holder)));
+      // use
+      used[start] = true;
+      holder.add(candidates[start]);
+      result.addAll(
+          combinationSum2(candidates, target - candidates[start], start + 1, used, holder));
+      used[start] = false;
+    }
+    return result;
   }
 }
