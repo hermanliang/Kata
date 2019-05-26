@@ -35,6 +35,19 @@ public class Sqrt {
    * @return square root of x
    */
   public int mySqrt(int x) {
-    return 0;
+    if (x == 0) return 0;
+    long start = 1;
+    long end = x;
+    while (end > start) {
+      long mid = start + (end - start + 1) / 2;
+      if (x == mid * mid) {
+        return (int) mid;
+      } else if (x > mid * mid) {
+        start = mid;
+      } else {
+        end = mid - 1;
+      }
+    }
+    return (int) start;
   }
 }
